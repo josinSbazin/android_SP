@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 21vTheme (maybe must be same style.xml application theme). -->
+    <style name="AppTheme" parent="AppTheme.Base"/>
+</resources>
