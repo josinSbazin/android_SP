@@ -12,7 +12,7 @@
     tools:context="ru.com.rh.sp.MainActivity">
 
     <LinearLayout
-        android:id="@+id/show_pdf"
+        android:id="@+id/calculate"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bar_height"
         android:layout_alignParentBottom="true"
