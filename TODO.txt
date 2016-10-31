@@ -1,14 +1,10 @@
-
 !For Android 5.0, if you want to set it directly into a style use:
-
 <item name="android:elevation">0dp</item>
 
 and for Support library compatibility use:
-
 <item name="elevation">0dp</item>
 
 Example of style for a AppCompat light theme:
-
 <style name="Theme.MyApp.ActionBar" parent="style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
     <!-- remove shadow below action bar -->
     <!-- <item name="android:elevation">0dp</item> -->
@@ -25,10 +21,5 @@ Then apply this custom ActionBar style to you app theme:
 
 <!-- Remove shadow below action bar Android < 5.0 -->
 <item name="android:windowContentOverlay">@null</item>
-
-
-
-
-
 
 http://stackoverflow.com/questions/12220428/placing-my-actionbar-at-the-bottom

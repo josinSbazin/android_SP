@@ -10,18 +10,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="actionBarStyle">@style/AppTheme.ActionBar</item>
+
     </style>
-
-    <style name="AppTheme.Anchor" parent="AppTheme.Base">
-        <item name="android:label">@string/anchor_label</item>
-    </style>
-
-
-        <style name="AppTheme.ActionBar" parent="style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-            <item name="elevation">0dp</item>
-            <item name="height">@dimen/bar_height</item>
-    </style>
-
 
 </resources>
