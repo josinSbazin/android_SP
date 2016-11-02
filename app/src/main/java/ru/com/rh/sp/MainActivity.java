@@ -1,5 +1,6 @@
 package ru.com.rh.sp;
 
+import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,11 +19,18 @@ public class MainActivity extends AppCompatActivity {
         //disable shadow on DrawerMenu
         mDrawerLayout = ((DrawerLayout)findViewById(R.id.drawer_layout));
         mDrawerView = findViewById(R.id.left_drawer);
-        mDrawerLayout.setDrawerElevation(0);
+        mDrawerLayout.setScrimColor(Color.TRANSPARENT);
     }
 
-    public void onClickNavigateButton(View view) {
+    public void onClickNavigationButton(View view) {
         if (mDrawerLayout != null)
-        mDrawerLayout.openDrawer(mDrawerView);
+            switch (view.getId()) {
+                case R.id.iButtonOpenDrawer:
+                    mDrawerLayout.openDrawer(mDrawerView);
+                    break;
+                case R.id.iButtonCloseDrawer:
+                    mDrawerLayout.closeDrawer(mDrawerView);
+                    break;
+            }
     }
 }

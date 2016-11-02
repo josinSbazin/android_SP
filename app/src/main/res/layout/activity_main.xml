@@ -37,22 +37,22 @@
             android:orientation="vertical" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/iButtonOpenDrawer"
             android:layout_width="@dimen/bar_height"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_action_name"
+            app:srcCompat="@drawable/ic_open_drawer"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/toolbar"
             android:background="@null"
-            android:onClick="onClickNavigateButton"/>
+            android:onClick="onClickNavigationButton"/>
     </RelativeLayout>
 
     <!--drawer layout-->
     <RelativeLayout
         android:id="@+id/left_drawer"
-        android:layout_width="240dp"
+        android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:choiceMode="singleChoice"
@@ -66,9 +66,16 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/bar_height"
             android:background="@color/white"
-            android:orientation="vertical"
-            android:layout_alignParentTop="true"
-            />
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true">
+        <ImageButton
+            android:id="@+id/iButtonCloseDrawer"
+            android:layout_width="@dimen/bar_height"
+            android:layout_height="@dimen/bar_height"
+            app:srcCompat="@drawable/ic_close_drawer"
+            android:background="@null"
+            android:onClick="onClickNavigationButton"/>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/bottomLineInDrawer"
