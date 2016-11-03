@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--drawer layout-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/left_drawer"
+    android:layout_width="280dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:choiceMode="singleChoice"
+    android:dividerHeight="0dp"
+    android:background="@color/white"
+    >
+
+    <RelativeLayout
+        android:id="@+id/topLineInDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bar_height"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+
+        <ImageButton
+            android:id="@+id/iButtonCloseDrawer"
+            android:layout_width="@dimen/bar_height"
+            android:layout_height="@dimen/bar_height"
+            app:srcCompat="@drawable/ic_close_drawer"
+
+            android:background="@null"
+            android:onClick="onClickNavigationButton"/>
+
+        <TextView
+            android:text="@string/title_draw_view"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:id="@+id/textView"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/iButtonCloseDrawer"
+            />
+
+        <ImageButton
+            android:layout_width="@dimen/bar_height"
+            android:layout_height="@dimen/bar_height"
+            app:srcCompat="@drawable/ic_settings"
+            android:id="@+id/settings_main_drawer"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:background="@null"/>
+    </RelativeLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:background="@color/colorPrimary"
+        app:elevation="@dimen/zero_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_below="@+id/topLineInDrawer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        app:menu="@menu/menu_drawer_main"
+        android:layout_above="@+id/bottomLineInDrawer" />
+
+    <LinearLayout
+        android:id="@+id/bottomLineInDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bar_height"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+    </LinearLayout>
+
+</RelativeLayout>

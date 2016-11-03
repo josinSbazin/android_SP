@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">СП63</string>
     <string name="anchor_label">Анкеровка и нахлестка</string>
+    <string name="title_draw_view">СП63</string>
+    <string name="menu_item1">Item1</string>
+    <string name="menu_item2">Item2</string>
+    <string name="menu_item3">Item3</string>
+    <string name="menu_feedback">Отзыв</string>
+    <string name="menu_about">О программе</string>
 </resources>
