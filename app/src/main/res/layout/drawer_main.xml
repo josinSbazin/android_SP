@@ -29,16 +29,6 @@
             android:background="@null"
             android:onClick="onClickNavigationButton"/>
 
-        <TextView
-            android:text="@string/title_draw_view"
-            android:layout_width="wrap_content"
-            android:gravity="center"
-            android:layout_height="match_parent"
-            android:id="@+id/textView"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/iButtonCloseDrawer"
-            />
-
         <ImageButton
             android:layout_width="@dimen/bar_height"
             android:layout_height="@dimen/bar_height"
@@ -48,6 +38,19 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentTop="true"
             android:background="@null"/>
+
+        <TextView
+            android:text="@string/title_draw_view"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:id="@+id/textView"
+            android:textSize="30sp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/iButtonCloseDrawer"
+            android:layout_toEndOf="@+id/iButtonCloseDrawer"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="monospace" />
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView
