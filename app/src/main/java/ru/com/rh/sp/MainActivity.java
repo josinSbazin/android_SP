@@ -1,6 +1,7 @@
 package ru.com.rh.sp;
 
 import android.graphics.Color;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,9 +21,10 @@ public class MainActivity extends AppCompatActivity {
         //disable shadow on DrawerMenu
         mDrawerLayout = ((DrawerLayout)findViewById(R.id.drawer_layout));
         mDrawerView = findViewById(R.id.left_drawer);
-        mDrawerLayout.setScrimColor(Color.TRANSPARENT);
+        initDrawer(mDrawerLayout);
     }
 
+    //Навигационные кнопки внутри и снаружи drawer'a
     public void onClickNavigationButton(View view) {
         if (mDrawerLayout != null)
             switch (view.getId()) {
@@ -35,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
             }
     }
 
+    //Инициализация drawer
+    private void initDrawer(DrawerLayout drawerLayout) {
+        if (drawerLayout != null) {
+            drawerLayout.setScrimColor(Color.TRANSPARENT);
+            drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+        }
+    }
+
+    //TODO: Опитсать метод!
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_drawer_main, menu);

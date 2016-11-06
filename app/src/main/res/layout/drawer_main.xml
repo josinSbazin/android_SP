@@ -9,8 +9,7 @@
     android:layout_gravity="start"
     android:choiceMode="singleChoice"
     android:dividerHeight="0dp"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
 
     <RelativeLayout
         android:id="@+id/topLineInDrawer"
@@ -22,35 +21,25 @@
 
         <ImageButton
             android:id="@+id/iButtonCloseDrawer"
-            android:layout_width="@dimen/bar_height"
-            android:layout_height="@dimen/bar_height"
+            android:layout_height="58dp"
             app:srcCompat="@drawable/ic_close_drawer"
-
             android:background="@null"
-            android:onClick="onClickNavigationButton"/>
-
-        <ImageButton
-            android:layout_width="@dimen/bar_height"
-            android:layout_height="@dimen/bar_height"
-            app:srcCompat="@drawable/ic_settings"
-            android:id="@+id/settings_main_drawer"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true"
-            android:background="@null"/>
+            android:onClick="onClickNavigationButton"
+            android:layout_width="50dp" />
 
         <TextView
             android:text="@string/title_draw_view"
             android:layout_width="wrap_content"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:layout_height="match_parent"
             android:id="@+id/textView"
-            android:textSize="30sp"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/iButtonCloseDrawer"
-            android:layout_toEndOf="@+id/iButtonCloseDrawer"
-            android:layout_alignParentBottom="true"
-            android:fontFamily="monospace" />
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="sans-serif"
+            android:textSize="24sp"
+            android:textStyle="normal|bold" />
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView
