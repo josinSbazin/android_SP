@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //TODO: Опитсать метод!
+/*    //Создание menu в drawer'e
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_drawer_main, menu);
         return true;
-    }
+    }*/
 }

@@ -21,11 +21,11 @@
 
         <ImageButton
             android:id="@+id/iButtonCloseDrawer"
-            android:layout_height="58dp"
+            android:layout_height="@dimen/bar_height"
+            android:layout_width="@dimen/close_drawer_button_width"
             app:srcCompat="@drawable/ic_close_drawer"
             android:background="@null"
-            android:onClick="onClickNavigationButton"
-            android:layout_width="50dp" />
+            android:onClick="onClickNavigationButton" />
 
         <TextView
             android:text="@string/title_draw_view"

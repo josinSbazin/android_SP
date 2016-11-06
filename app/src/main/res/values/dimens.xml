@@ -4,4 +4,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="bar_height">58dp</dimen>
+    <dimen name="close_drawer_button_width">50dp</dimen>
 </resources>
