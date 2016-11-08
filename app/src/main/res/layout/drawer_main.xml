@@ -41,6 +41,9 @@
             android:textSize="24sp"
             android:textStyle="normal|bold" />
     </RelativeLayout>
+    <!--TODO-->
+    <!--Добавить expandable-list-view http://www.androidhive.info/2013/07/android-expandable-list-view-tutorial/-->
+    <!--Заменить существующее меню-->
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
