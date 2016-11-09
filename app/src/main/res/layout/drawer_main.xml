@@ -55,11 +55,11 @@
         android:layout_below="@+id/topLineInDrawer"
         android:layout_centerHorizontal="true">
 
-        <ExpandableListView
+        <ru.com.rh.sp.widgets.AnimatedExpandableListView
             android:id="@+id/menu_expListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
-        </ExpandableListView>
+        </ru.com.rh.sp.widgets.AnimatedExpandableListView>
 
     </LinearLayout>
 
