@@ -2,11 +2,13 @@
     <string name="app_name">СП63</string>
     <string name="anchor_label">Анкеровка и нахлестка</string>
     <string name="title_draw_view">СП 63.13330.2012</string>
+
+    <!--Пункты основного меню-->
+    <string name="menu_reinforcement_title">Арматура</string>
     <string name="subr_item1">Сортамент</string>
     <string name="subr_item2">Анкеровка</string>
     <string name="subr_item3">Расчетные сопротивления</string>
     <string name="menu_feedback">Отзыв</string>
     <string name="menu_about">О программе</string>
     <string name="settings">Настройки</string>
-    <string name="menu_reinforcement_title">Арматура</string>
 </resources>

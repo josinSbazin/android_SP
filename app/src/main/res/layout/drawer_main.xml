@@ -45,20 +45,16 @@
     <!--Добавить expandable-list-view http://www.androidhive.info/2013/07/android-expandable-list-view-tutorial/-->
     <!--Заменить существующее меню-->
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:background="@color/colorPrimary"
-        app:elevation="@dimen/zero_margin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
+    <ExpandableListView
+        android:id="@+id/exListMenu"
         android:layout_below="@+id/topLineInDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        app:menu="@menu/menu_drawer_main"
-        android:layout_above="@+id/bottomLineInDrawer" />
+        android:background="@color/colorPrimary"
+        />
+
 
     <LinearLayout
         android:id="@+id/bottomLineInDrawer"
@@ -68,5 +64,6 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true">
     </LinearLayout>
+
 
 </RelativeLayout>

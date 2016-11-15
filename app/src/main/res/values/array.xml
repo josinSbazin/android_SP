@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Группы меню-->
+
+    <!--Названия меню-->
+    <string-array name="menu_group_1">
+        <item>Big Buck Bunny</item>
+        <item>Elephants Dream</item>
+        <item>Sintel</item>
+        <item>Tears of Steel</item>
+    </string-array>
+
+    <!--Иконки меню-->
+
+    <string-array name="menu_group_2">
+        <item>One</item>
+        <item>Two</item>
+    </string-array>
+
+</resources>
