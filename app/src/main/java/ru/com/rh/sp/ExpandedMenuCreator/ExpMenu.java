@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ExpMenu {
     private ArrayList<Group> groups;
 
-    public ExpMenu () {
+    public ExpMenu() {
         groups = new ArrayList<>();
     }
 
@@ -27,8 +27,8 @@ public class ExpMenu {
      * @param name имя новой группы
      * @return вовзращает ссылку на созданную и добавленную группу
      */
-    public Group addGroup(String name) {
-        Group result = new Group(name);
+    public Group addGroup(String name, Drawable icon) {
+        Group result = new Group(name, icon);
         groups.add(result);
         return result;
     }
@@ -38,11 +38,11 @@ public class ExpMenu {
      * @return группа из меню
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
-    public Group getGroupById(int id) {
+    Group getGroupById(int id) {
         return groups.get(id);
     }
 
-    public int size() {
+    int size() {
         return groups.size();
     }
 
@@ -54,29 +54,39 @@ public class ExpMenu {
      */
     public class Group {
         private String name;
+        private Drawable icon;
         private ArrayList<MenuItem> items;
 
-        Group(String name) {
+        Group(String name, Drawable icon) {
             this.name = name;
+            this.icon = icon;
             items = new ArrayList<>();
         }
 
         /**
          * @return вовзращает имя группы меню
          */
-        public String getName() {
+        String getName() {
             return name;
+        }
+
+        Drawable getIcon() {
+            return icon;
+        }
+
+        public void addMenuItem(String name, Drawable icon) {
+            items.add(new MenuItem(name, icon));
         }
 
         /**
          * @param id индекс возвращаемого пункта подменю
          * @return вовзращает пункт подменю
          */
-        public MenuItem getMenuItemById(int id) {
+        MenuItem getMenuItemById(int id) {
             return items.get(id);
         }
 
-        public int size() {
+        int size() {
             return items.size();
         }
 
@@ -86,20 +96,20 @@ public class ExpMenu {
          * -название подменю
          * -иконка подменю
          */
-        private class MenuItem  {
+        class MenuItem  {
             private String name;
             private Drawable icon;
 
-            public MenuItem(String name, Drawable icon) {
+            MenuItem(String name, Drawable icon) {
                 this.name = name;
                 this.icon = icon;
             }
 
-            public String getName() {
+            String getName() {
                 return name;
             }
 
-            public Drawable getIcon() {
+            Drawable getIcon() {
                 return icon;
             }
         }

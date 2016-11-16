@@ -1,13 +1,16 @@
 package ru.com.rh.sp;
 
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ExpandableListView;
 
 import ru.com.rh.sp.ExpandedMenuCreator.ExpMenu;
+import ru.com.rh.sp.ExpandedMenuCreator.ExpMenuAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,12 +26,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = ((DrawerLayout)findViewById(R.id.drawer_layout));
         mDrawerView = findViewById(R.id.left_drawer);
         initDrawer(mDrawerLayout);
-
-        //initialize menu
-        ExpMenu mainMenu = new ExpMenu();
-        ExpMenu.Group arm = mainMenu.addGroup("Арматура");
-//        arm.addItem("")
-
+        initMainMenu((ExpandableListView)findViewById(R.id.exListMenu));
     }
 
     //Навигационные кнопки внутри и снаружи drawer'a
@@ -52,9 +50,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_drawer_main, menu);
-//        return true;
-//    }
+    private void initMainMenu(ExpandableListView listView) {
+        //initialize menu
+        ExpMenu mainMenu = new ExpMenu();
+        ExpMenu.Group arm = mainMenu.addGroup("Арматура", ContextCompat.getDrawable(this, R.drawable.ic_test_group_icon1));
+        arm.addMenuItem("Анкеровка", ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        arm.addMenuItem("Сортамент", ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        arm.addMenuItem("Расчетные сопротивления", ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        arm.addMenuItem("Калькулятор массы", ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        arm.addMenuItem("Расчет площади", ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+
+        //start - for test
+        ExpMenu.Group test = mainMenu.addGroup("Тест", ContextCompat.getDrawable(this, R.drawable.ic_test_group_icon2));
+        test.addMenuItem("One",ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        test.addMenuItem("TWO",ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        test.addMenuItem("ТРИ!",ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        //start - for test
+
+        ExpMenuAdapter adapter = new ExpMenuAdapter(getApplicationContext(), mainMenu);
+        listView.setAdapter(adapter);
+        listView.expandGroup(0);
+    }
 }

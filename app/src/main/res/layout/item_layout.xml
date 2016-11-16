@@ -7,11 +7,15 @@
     <ImageView
         android:id="@+id/item_menu_image"
         android:layout_width="@dimen/bar_height"
-        android:layout_height="@dimen/bar_height" />
+        android:layout_height="@dimen/bar_height"
+        android:contentDescription="@string/item_icon_description" />
 
     <TextView
         android:id="@+id/item_menu_text"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bar_height" />
+        android:gravity="center_vertical"
+        android:layout_height="@dimen/bar_height"
+        android:textColor="@color/black" />
+
 
 </LinearLayout>

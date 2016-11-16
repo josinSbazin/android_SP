@@ -7,40 +7,39 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ru.com.rh.sp.MainActivity;
 import ru.com.rh.sp.R;
 
 /**
- * Адаптер для реализации соpданного с помощью {@link ExpMenu} меню
+ * Адаптер для реализации созданного с помощью {@link ExpMenu} меню
  */
 
 public class ExpMenuAdapter extends BaseExpandableListAdapter{
-    private ArrayList<ExpMenu.Group> groups;
+    private ExpMenu menu;
     private Context context;
 
-    public ExpMenuAdapter(Context context, ArrayList<MainActivity.Group> groups) {
+    public ExpMenuAdapter(Context context, ExpMenu menu) {
         this.context = context;
-        this.groups = groups;
+        this.menu = menu;
     }
 
     @Override
     public int getGroupCount() {
-        return groups.size();
+        return menu.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return groups.get(groupPosition).children.size();
+        return menu.getGroupById(groupPosition).size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return groups.get(groupPosition);
+        return menu.getGroupById(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return groups.get(groupPosition).children.get(childPosition);
+        return menu.getGroupById(groupPosition).getMenuItemById(childPosition);
     }
 
     @Override
@@ -62,18 +61,25 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.group_layout, null);
+            convertView = inflater.inflate(R.layout.group_layout, parent, false);
         }
-//
-//        if (isExpanded){
-//            //Изменяем что-нибудь, если текущая Group раскрыта
-//        }
-//        else{
-//            //Изменяем что-нибудь, если текущая Group скрыта
-//        }
+
+        ExpMenu.Group group = (ExpMenu.Group)getGroup(groupPosition);
+
+        ImageView indicatorImageView = (ImageView) convertView.findViewById(R.id.indicator_menu_image);
+        if (isExpanded){
+                indicatorImageView.setImageResource(R.drawable.ic_group_open);
+        }
+        else{
+                indicatorImageView.setImageResource(R.drawable.ic_group_close);
+        }
+
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.group_menu_image);
+        imageView.setImageDrawable(group.getIcon());
 
         TextView textGroup = (TextView) convertView.findViewById(R.id.group_menu_text);
-        textGroup.setText(((MainActivity.Group)getGroup(groupPosition)).groupTitle);
+        textGroup.setText(group.getName());
+
         return convertView;
     }
 
@@ -81,23 +87,16 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.item_layout, null);
+            convertView = inflater.inflate(R.layout.item_layout, parent, false);
         }
 
+        ExpMenu.Group.MenuItem child = ((ExpMenu.Group.MenuItem)getChild(groupPosition, childPosition));
+
         ImageView imageView = (ImageView) convertView.findViewById(R.id.item_menu_image);
-        imageView.setImageDrawable();
-        //ПРОДОЛЖИТЬ: Прикрепить к каждому итему картинку!
+        imageView.setImageDrawable(child.getIcon());
 
         TextView textChild = (TextView) convertView.findViewById(R.id.item_menu_text);
-        textChild.setText(mGroups.get(groupPosition).get(childPosition));
-
-        Button button = (Button)convertView.findViewById(R.id.buttonChild);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(mContext,"button is pressed",5000).show();
-            }
-        });
+        textChild.setText(child.getName());
 
         return convertView;
     }
