@@ -11,4 +11,7 @@
     <string name="menu_feedback">Отзыв</string>
     <string name="menu_about">О программе</string>
     <string name="settings">Настройки</string>
+    <string name="close_drawer_description">close drawer</string>
+    <string name="open_drawer_description">open drawer</string>
+    <string name="expand_menu_description">expand menu</string>
 </resources>

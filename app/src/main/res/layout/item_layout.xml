@@ -8,6 +8,7 @@
         android:id="@+id/item_menu_image"
         android:layout_width="@dimen/bar_height"
         android:layout_height="@dimen/bar_height" />
+
     <TextView
         android:id="@+id/item_menu_text"
         android:layout_width="match_parent"

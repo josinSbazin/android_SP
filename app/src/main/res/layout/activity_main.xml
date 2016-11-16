@@ -46,7 +46,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/toolbar"
             android:background="@null"
-            android:onClick="onClickNavigationButton"/>
+            android:onClick="onClickNavigationButton"
+            android:contentDescription="@string/open_drawer_description" />
     </RelativeLayout>
 
     <include layout="@layout/drawer_main" />

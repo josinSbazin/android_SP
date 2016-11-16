@@ -25,7 +25,8 @@
             android:layout_width="@dimen/close_drawer_button_width"
             app:srcCompat="@drawable/ic_close_drawer"
             android:background="@null"
-            android:onClick="onClickNavigationButton" />
+            android:onClick="onClickNavigationButton"
+            android:contentDescription="@string/close_drawer_description" />
 
         <TextView
             android:text="@string/title_draw_view"
@@ -35,6 +36,7 @@
             android:id="@+id/textView"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/iButtonCloseDrawer"
+            android:layout_toEndOf="@+id/iButtonCloseDrawer"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:fontFamily="sans-serif"
