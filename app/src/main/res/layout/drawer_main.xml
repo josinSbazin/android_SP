@@ -43,10 +43,8 @@
             android:textSize="24sp"
             android:textStyle="normal|bold" />
     </RelativeLayout>
-    <!--TODO-->
-    <!--Добавить expandable-list-view http://www.androidhive.info/2013/07/android-expandable-list-view-tutorial/-->
-    <!--Заменить существующее меню-->
 
+    <!--http://stackoverflow.com/questions/15501413/change-expandable-indicator-in-expandablelistview-->
     <ExpandableListView
         android:id="@+id/exListMenu"
         android:layout_below="@+id/topLineInDrawer"
@@ -57,7 +55,6 @@
         android:background="@color/colorPrimary"
         />
 
-
     <LinearLayout
         android:id="@+id/bottomLineInDrawer"
         android:layout_width="match_parent"
@@ -66,6 +63,5 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true">
     </LinearLayout>
-
 
 </RelativeLayout>

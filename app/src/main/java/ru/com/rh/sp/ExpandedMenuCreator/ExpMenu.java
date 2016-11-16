@@ -1,6 +1,8 @@
 package ru.com.rh.sp.ExpandedMenuCreator;
 
 
+import android.graphics.drawable.Drawable;
+
 import java.util.ArrayList;
 
 /**
@@ -31,51 +33,18 @@ public class ExpMenu {
         return result;
     }
 
-//    /**
-//     * @param names имена новых групп через запятую ("name1", "name2", "name2", ...)
-//     * @return true, if group added
-//     */
-//    public boolean addSeveralGroups(String... names) {
-//        for (String name : names) addGroup(name);
-//        return true;
-//    }
+    /**
+     * @param id индекс возвращаемой из массива группы
+     * @return группа из меню
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     */
+    public Group getGroupById(int id) {
+        return groups.get(id);
+    }
 
-//    /**
-//     * @param id индекс вставляемой группы
-//     * @param name имя новой группы
-//     * @return возвращает ссылку на созданную и добавленную группу
-//     * @throws IndexOutOfBoundsException {@inheritDoc}
-//     */
-//    public Group setGroup(int id, String name) {
-//        Group result = new Group(name);
-//        groups.set(id, result);
-//        return result;
-//    }
-
-//    /**
-//     * @param id индекс возвращаемой из массива группы
-//     * @return группа из меню
-//     * @throws IndexOutOfBoundsException {@inheritDoc}
-//     */
-//    public Group getGroupById(int id) {
-//        return groups.get(id);
-//    }
-
-//    /**
-//     * Возвращает первую группу {@link Group} с искомым именем
-//     * если группа с введенным именем не найдена - возвращает null
-//     *
-//     * @param name имя возвращаемой из массива группы
-//     * @return группа из меню
-//     * @throws IndexOutOfBoundsException {@inheritDoc}
-//     */
-
-//    public Group getGroupByName(String name) {
-//        for (Group group : groups) {
-//            if (group.name.equals(name)) return group;
-//        }
-//        return null;
-//    }
+    public int size() {
+        return groups.size();
+    }
 
     /**
      * Внутренний класс Group служит для управления группами меню
@@ -85,17 +54,54 @@ public class ExpMenu {
      */
     public class Group {
         private String name;
+        private ArrayList<MenuItem> items;
 
         Group(String name) {
             this.name = name;
+            items = new ArrayList<>();
         }
 
+        /**
+         * @return вовзращает имя группы меню
+         */
         public String getName() {
             return name;
         }
 
-        private class MenuItem  {
+        /**
+         * @param id индекс возвращаемого пункта подменю
+         * @return вовзращает пункт подменю
+         */
+        public MenuItem getMenuItemById(int id) {
+            return items.get(id);
+        }
 
+        public int size() {
+            return items.size();
+        }
+
+        /**
+         * Внутренний класс MenuItem служит для управления пунктами подменю.
+         * В классе храниться следующая информация:
+         * -название подменю
+         * -иконка подменю
+         */
+        private class MenuItem  {
+            private String name;
+            private Drawable icon;
+
+            public MenuItem(String name, Drawable icon) {
+                this.name = name;
+                this.icon = icon;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public Drawable getIcon() {
+                return icon;
+            }
         }
     }
 }
