@@ -28,6 +28,11 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
         ImageView imageIndicatorView;
     }
 
+    private static class ChildHolder {
+        TextView textView;
+        ImageView imageView;
+    }
+
     @Override
     public int getGroupCount() {
         return mMenu.size();
@@ -65,7 +70,6 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-
         GroupHolder groupHolder;
 
         if (convertView == null) {
@@ -80,8 +84,8 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
 
         ExpMenu.Group group = (ExpMenu.Group)getGroup(groupPosition);
 
-        groupHolder.textView.setText(group.getName());
         groupHolder.imageView.setImageDrawable(group.getIcon());
+        groupHolder.textView.setText(group.getName());
 
         if (isExpanded) groupHolder.imageIndicatorView.setImageDrawable(mMenu.getGroupIndicatorOpen());
         else groupHolder.imageIndicatorView.setImageDrawable(mMenu.getGroupIndicatorClose());
@@ -91,18 +95,21 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+        ChildHolder childHolder;
+
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.item_layout, parent, false);
-        }
+            childHolder = new ChildHolder();
+            childHolder.imageView = (ImageView) convertView.findViewById(R.id.item_menu_image);
+            childHolder.textView = (TextView) convertView.findViewById(R.id.item_menu_text);
+            convertView.setTag(childHolder);
+        } else childHolder = (ChildHolder) convertView.getTag();
 
         ExpMenu.Group.MenuItem child = ((ExpMenu.Group.MenuItem)getChild(groupPosition, childPosition));
 
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.item_menu_image);
-        imageView.setImageDrawable(child.getIcon());
-
-        TextView textChild = (TextView) convertView.findViewById(R.id.item_menu_text);
-        textChild.setText(child.getName());
+        childHolder.imageView.setImageDrawable(child.getIcon());
+        childHolder.textView.setText(child.getName());
 
         return convertView;
     }
