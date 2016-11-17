@@ -2,6 +2,7 @@ package ru.com.rh.sp.ExpandedMenuCreator;
 
 
 import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -40,7 +41,7 @@ public class ExpMenu {
     Drawable getGroupIndicatorOpen() {
         return groupIndicatorOpen;
     }
-
+    
     /**
      * @param name имя новой группы
      * @return вовзращает ссылку на созданную и добавленную группу
@@ -73,12 +74,22 @@ public class ExpMenu {
     public class Group {
         private String name;
         private Drawable icon;
+        private ImageView groupIndicatorImageView;
         private ArrayList<MenuItem> items;
 
         Group(String name, Drawable icon) {
             this.name = name;
             this.icon = icon;
+            groupIndicatorImageView = (ImageView) convertView.findViewById(R.id.indicator_menu_image);
             items = new ArrayList<>();
+        }
+        
+        public void setGroupIndicatorImage(int id) {
+            groupIndicatorImageView = (ImageView) convertView.findViewById(id);
+        }
+    
+        public ImageView getGroupIndicatorImage() {
+            return groupIndicatorImageView;
         }
 
         /**

@@ -79,9 +79,23 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
         } else groupHolder = (GroupHolder) convertView.getTag();
 
         ExpMenu.Group group = (ExpMenu.Group)getGroup(groupPosition);
+<<<<<<< HEAD
 
         groupHolder.textView.setText(group.getName());
         groupHolder.imageView.setImageDrawable(group.getIcon());
+=======
+        ImageView groupIndicatorImageView = group.getIndicatorImageView();
+        
+        if (isExpanded){
+                groupIndicatorImageView.setImageResource(R.drawable.ic_group_open);
+        }
+        else{
+                groupIndicatorImageView.setImageResource(R.drawable.ic_group_close);
+        }
+
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.group_menu_image);
+        imageView.setImageDrawable(group.getIcon());
+>>>>>>> origin/master
 
         if (isExpanded) groupHolder.imageIndicatorView.setImageDrawable(mMenu.getGroupIndicatorOpen());
         else groupHolder.imageIndicatorView.setImageDrawable(mMenu.getGroupIndicatorClose());
