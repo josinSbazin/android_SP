@@ -18,9 +18,27 @@ import java.util.ArrayList;
 
 public class ExpMenu {
     private ArrayList<Group> groups;
+    private Drawable groupIndicatorClose;
+    private Drawable groupIndicatorOpen;
 
-    public ExpMenu() {
+
+    /**
+     *
+     * @param close изображение закрытого индикаора группы
+     * @param open изображения открытого индикатора группы
+     */
+    public ExpMenu(Drawable close, Drawable open) {
         groups = new ArrayList<>();
+        groupIndicatorClose = close;
+        groupIndicatorOpen = open;
+    }
+
+    Drawable getGroupIndicatorClose() {
+        return groupIndicatorClose;
+    }
+
+    Drawable getGroupIndicatorOpen() {
+        return groupIndicatorOpen;
     }
 
     /**

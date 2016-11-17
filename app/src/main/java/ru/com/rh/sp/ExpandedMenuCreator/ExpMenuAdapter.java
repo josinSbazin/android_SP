@@ -14,32 +14,38 @@ import ru.com.rh.sp.R;
  */
 
 public class ExpMenuAdapter extends BaseExpandableListAdapter{
-    private ExpMenu menu;
-    private Context context;
+    private ExpMenu mMenu;
+    private Context mContext;
 
     public ExpMenuAdapter(Context context, ExpMenu menu) {
-        this.context = context;
-        this.menu = menu;
+        this.mContext = context;
+        this.mMenu = menu;
+    }
+
+    private static class GroupHolder {
+        TextView textView;
+        ImageView imageView;
+        ImageView imageIndicatorView;
     }
 
     @Override
     public int getGroupCount() {
-        return menu.size();
+        return mMenu.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return menu.getGroupById(groupPosition).size();
+        return mMenu.getGroupById(groupPosition).size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return menu.getGroupById(groupPosition);
+        return mMenu.getGroupById(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return menu.getGroupById(groupPosition).getMenuItemById(childPosition);
+        return mMenu.getGroupById(groupPosition).getMenuItemById(childPosition);
     }
 
     @Override
@@ -59,26 +65,26 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+
+        GroupHolder groupHolder;
+
         if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.group_layout, parent, false);
-        }
+            groupHolder = new GroupHolder();
+            groupHolder.imageView = (ImageView) convertView.findViewById(R.id.group_menu_image);
+            groupHolder.textView = (TextView) convertView.findViewById(R.id.group_menu_text);
+            groupHolder.imageIndicatorView = (ImageView) convertView.findViewById(R.id.indicator_menu_image);
+            convertView.setTag(groupHolder);
+        } else groupHolder = (GroupHolder) convertView.getTag();
 
         ExpMenu.Group group = (ExpMenu.Group)getGroup(groupPosition);
 
-        ImageView indicatorImageView = (ImageView) convertView.findViewById(R.id.indicator_menu_image);
-        if (isExpanded){
-                indicatorImageView.setImageResource(R.drawable.ic_group_open);
-        }
-        else{
-                indicatorImageView.setImageResource(R.drawable.ic_group_close);
-        }
+        groupHolder.textView.setText(group.getName());
+        groupHolder.imageView.setImageDrawable(group.getIcon());
 
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.group_menu_image);
-        imageView.setImageDrawable(group.getIcon());
-
-        TextView textGroup = (TextView) convertView.findViewById(R.id.group_menu_text);
-        textGroup.setText(group.getName());
+        if (isExpanded) groupHolder.imageIndicatorView.setImageDrawable(mMenu.getGroupIndicatorOpen());
+        else groupHolder.imageIndicatorView.setImageDrawable(mMenu.getGroupIndicatorClose());
 
         return convertView;
     }
@@ -86,7 +92,7 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.item_layout, parent, false);
         }
 

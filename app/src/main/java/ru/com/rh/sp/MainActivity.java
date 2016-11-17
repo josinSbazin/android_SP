@@ -52,19 +52,30 @@ public class MainActivity extends AppCompatActivity {
 
     private void initMainMenu(ExpandableListView listView) {
         //initialize menu
-        ExpMenu mainMenu = new ExpMenu();
-        ExpMenu.Group arm = mainMenu.addGroup("Арматура", ContextCompat.getDrawable(this, R.drawable.ic_test_group_icon1));
-        arm.addMenuItem("Анкеровка", ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
-        arm.addMenuItem("Сортамент", ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
-        arm.addMenuItem("Расчетные сопротивления", ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
-        arm.addMenuItem("Калькулятор массы", ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
-        arm.addMenuItem("Расчет площади", ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        ExpMenu mainMenu = new ExpMenu(ContextCompat.getDrawable(this, R.drawable.ic_group_close),
+                ContextCompat.getDrawable(this, R.drawable.ic_group_open));
+        ExpMenu.Group arm = mainMenu.addGroup("Арматура",
+                ContextCompat.getDrawable(this, R.drawable.ic_test_group_icon1));
+        arm.addMenuItem("Анкеровка",
+                ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        arm.addMenuItem("Сортамент",
+                ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        arm.addMenuItem("Расчетные сопротивления",
+                ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        arm.addMenuItem("Калькулятор массы",
+                ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        arm.addMenuItem("Расчет площади",
+                ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
 
         //start - for test
-        ExpMenu.Group test = mainMenu.addGroup("Тест", ContextCompat.getDrawable(this, R.drawable.ic_test_group_icon2));
+        ExpMenu.Group test = mainMenu.addGroup("Тест",
+                ContextCompat.getDrawable(this, R.drawable.ic_test_group_icon2));
         test.addMenuItem("One",ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
         test.addMenuItem("TWO",ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
         test.addMenuItem("ТРИ!",ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        for (int i = 0; i < 300; i++) {
+            test.addMenuItem("hello, muthufocker" + i,ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+        }
         //start - for test
 
         ExpMenuAdapter adapter = new ExpMenuAdapter(getApplicationContext(), mainMenu);
