@@ -66,7 +66,7 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
 
         ExpMenu.Group group = (ExpMenu.Group)getGroup(groupPosition);
 
-        ImageView indicatorImageView = (ImageView) convertView.findViewById(R.id.indicator_menu_image);
+        ImageView indicatorImageView = group.getIndicatorImage();
         if (isExpanded){
                 indicatorImageView.setImageResource(R.drawable.ic_group_open);
         }
