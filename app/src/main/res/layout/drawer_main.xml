@@ -55,7 +55,7 @@
         android:groupIndicator="@null"
         android:background="@color/colorPrimary"
         android:divider="@null"
-        />
+        android:layout_above="@+id/bottomLineInDrawer" />
 
     <LinearLayout
         android:id="@+id/bottomLineInDrawer"
