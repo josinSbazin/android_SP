@@ -19,19 +19,9 @@ import java.util.ArrayList;
 
 public class ExpMenu {
     private ArrayList<Group> groups;
-    private ImageView groupIndicatorImageView;
 
     public ExpMenu() {
         groups = new ArrayList<>();
-        groupIndicatorImageView = (ImageView) convertView.findViewById(R.id.indicator_menu_image);
-    }
-    
-    public void setGroupIndicatorImage(int id) {
-        groupIndicatorImageView = (ImageView) convertView.findViewById(id);
-    }
-    
-    public ImageView getGroupIndicatorImage() {
-        return groupIndicatorImageView;
     }
     
     /**
@@ -66,12 +56,22 @@ public class ExpMenu {
     public class Group {
         private String name;
         private Drawable icon;
+        private ImageView groupIndicatorImageView;
         private ArrayList<MenuItem> items;
 
         Group(String name, Drawable icon) {
             this.name = name;
             this.icon = icon;
+            groupIndicatorImageView = (ImageView) convertView.findViewById(R.id.indicator_menu_image);
             items = new ArrayList<>();
+        }
+        
+        public void setGroupIndicatorImage(int id) {
+            groupIndicatorImageView = (ImageView) convertView.findViewById(id);
+        }
+    
+        public ImageView getGroupIndicatorImage() {
+            return groupIndicatorImageView;
         }
 
         /**
