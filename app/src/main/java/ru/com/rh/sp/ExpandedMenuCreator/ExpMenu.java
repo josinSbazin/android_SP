@@ -2,6 +2,7 @@ package ru.com.rh.sp.ExpandedMenuCreator;
 
 
 import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -18,11 +19,21 @@ import java.util.ArrayList;
 
 public class ExpMenu {
     private ArrayList<Group> groups;
+    private ImageView groupIndicatorImageView;
 
     public ExpMenu() {
         groups = new ArrayList<>();
+        groupIndicatorImageView = (ImageView) convertView.findViewById(R.id.indicator_menu_image);
     }
-
+    
+    public void setGroupIndicatorImage(int id) {
+        groupIndicatorImageView = (ImageView) convertView.findViewById(id);
+    }
+    
+    public ImageView getGroupIndicatorImage() {
+        return groupIndicatorImageView;
+    }
+    
     /**
      * @param name имя новой группы
      * @return вовзращает ссылку на созданную и добавленную группу
