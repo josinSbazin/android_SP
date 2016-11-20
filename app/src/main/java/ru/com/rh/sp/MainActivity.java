@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 ContextCompat.getDrawable(this, R.drawable.ic_group_open));
         ExpMenu.Group arm = mainMenu.addGroup("Арматура",
                 ContextCompat.getDrawable(this, R.drawable.ic_test_group_icon1));
-        arm.addMenuItem("Анкеровка",
+        arm.addMenuItem("Нахлестка и анкеровка",
                 ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
         arm.addMenuItem("Сортамент",
                 ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
@@ -66,17 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
         arm.addMenuItem("Расчет площади",
                 ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
-
-        //start - for test
-        ExpMenu.Group test = mainMenu.addGroup("Тест",
-                ContextCompat.getDrawable(this, R.drawable.ic_test_group_icon2));
-        test.addMenuItem("One",ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
-        test.addMenuItem("TWO",ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
-        test.addMenuItem("ТРИ!",ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
-        for (int i = 0; i < 300; i++) {
-            test.addMenuItem("hello, muthufocker" + i,ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
-        }
-        //start - for test
 
         ExpMenuAdapter adapter = new ExpMenuAdapter(getApplicationContext(), mainMenu);
         listView.setAdapter(adapter);
