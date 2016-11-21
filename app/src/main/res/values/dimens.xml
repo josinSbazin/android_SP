@@ -5,4 +5,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="bar_height">58dp</dimen>
     <dimen name="close_drawer_button_width">50dp</dimen>
+    <dimen name="ic_icon_width_and_height">46dp</dimen>
+    <dimen name="ic_icon_start_margin">6dp</dimen>
+    <dimen name="image_group_indicator_width">48dp</dimen>
+    <dimen name="shadow_eight">2dp</dimen>
 </resources>

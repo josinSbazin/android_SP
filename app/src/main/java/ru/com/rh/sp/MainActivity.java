@@ -6,6 +6,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.widget.ExpandableListView;
 
@@ -16,15 +17,17 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private View mDrawerView;
+    private SearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //disable shadow on DrawerMenu
+        //disable shadow_down on DrawerMenu
         mDrawerLayout = ((DrawerLayout)findViewById(R.id.drawer_layout));
         mDrawerView = findViewById(R.id.left_drawer);
+
         initDrawer(mDrawerLayout);
         initMainMenu((ExpandableListView)findViewById(R.id.exListMenu));
     }

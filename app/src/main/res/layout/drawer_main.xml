@@ -15,8 +15,8 @@
         android:id="@+id/topLineInDrawer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bar_height"
-        android:background="@color/white"
         android:orientation="horizontal"
+        android:background="@color/white"
         android:layout_alignParentTop="true">
 
         <ImageButton
@@ -26,20 +26,37 @@
             app:srcCompat="@drawable/ic_close_drawer"
             android:background="@null"
             android:onClick="onClickNavigationButton"
-            android:contentDescription="@string/close_drawer_description" />
+            android:contentDescription="@string/close_drawer_description"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-        <SearchView
-            android:layout_width="58dp"
+        <android.support.v7.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerVertical="true"
+            style="@style/SPSearchView"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/iButtonCloseDrawer"
-            android:layout_toEndOf="@id/iButtonCloseDrawer" />
+            android:layout_toRightOf="@+id/menuLogoImageView"
+            android:layout_toEndOf="@+id/menuLogoImageView" />
+
+        <ImageView
+            android:id="@+id/menuLogoImageView"
+            android:layout_width="@dimen/ic_icon_width_and_height"
+            android:layout_height="@dimen/ic_icon_width_and_height"
+            app:srcCompat="@drawable/ic_logo"
+            android:layout_marginLeft="@dimen/ic_icon_start_margin"
+            android:layout_marginStart="6dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/logo_of_menu_desription" />
 
     </RelativeLayout>
 
-    <!--http://stackoverflow.com/questions/15501413/change-expandable-indicator-in-expandablelistview-->
     <ExpandableListView
         android:id="@+id/exListMenu"
         android:layout_below="@+id/topLineInDrawer"
@@ -53,29 +70,59 @@
         android:layout_above="@+id/bottomLineInDrawer" />
 
     <LinearLayout
-        android:id="@+id/bottomLineInDrawer"
+        android:background="@drawable/shadow_up"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bar_height"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true">
-    </LinearLayout>
-
-    <LinearLayout
-        android:background="@color/colorPrimary"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/shadow_eight"
         android:layout_below="@+id/topLineInDrawer"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
 
     <LinearLayout
-        android:background="@color/colorPrimary"
+        android:background="@drawable/shadow_down"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/shadow_eight"
         android:layout_above="@+id/bottomLineInDrawer"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
+
+    <LinearLayout
+        android:id="@+id/bottomLineInDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bar_height"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="3">
+
+        <ImageButton
+            android:id="@+id/imageButtonAbout"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_about"
+            android:layout_weight="1"
+            android:contentDescription="@string/about_description" />
+
+        <ImageButton
+            android:id="@+id/imageButtonSettings"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_settings"
+            android:layout_weight="1"
+            android:contentDescription="@string/settings_description" />
+
+        <ImageButton
+            android:id="@+id/imageButtonFeedback"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_feedback"
+            android:layout_weight="1"
+            android:contentDescription="@string/feedback_description"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

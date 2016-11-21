@@ -25,7 +25,7 @@
 
     <ImageView
         android:id="@+id/indicator_menu_image"
-        android:layout_width="@dimen/bar_height"
+        android:layout_width="@dimen/image_group_indicator_width"
         android:layout_height="@dimen/bar_height"
         android:contentDescription="@string/item_icon_description"
         android:layout_alignParentTop="true"

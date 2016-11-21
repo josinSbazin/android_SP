@@ -5,14 +5,12 @@
 
     <!--Пункты основного меню-->
     <string name="menu_reinforcement_title">Арматура</string>
-    <string name="subr_item1">Сортамент</string>
-    <string name="subr_item2">Анкеровка</string>
-    <string name="subr_item3">Расчетные сопротивления</string>
-    <string name="menu_feedback">Отзыв</string>
-    <string name="menu_about">О программе</string>
-    <string name="settings">Настройки</string>
     <string name="close_drawer_description">close drawer</string>
     <string name="open_drawer_description">open drawer</string>
     <string name="expand_menu_description">expand menu</string>
     <string name="item_icon_description">item icon</string>
+    <string name="logo_of_menu_desription">logo_of_menu</string>
+    <string name="about_description">about</string>
+    <string name="settings_description">settings</string>
+    <string name="feedback_description">feedback</string>
 </resources>
