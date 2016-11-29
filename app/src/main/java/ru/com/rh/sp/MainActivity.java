@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         ExpMenu mainMenu = new ExpMenu(ContextCompat.getDrawable(this, R.drawable.ic_group_close),
                 ContextCompat.getDrawable(this, R.drawable.ic_group_open));
         ExpMenu.Group arm = mainMenu.addGroup("Арматура",
-                ContextCompat.getDrawable(this, R.drawable.ic_test_group_icon1));
+                ContextCompat.getDrawable(this, R.drawable.ic_arm));
         arm.addMenuItem("Нахлестка и анкеровка",
                 ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
         arm.addMenuItem("Сортамент",
