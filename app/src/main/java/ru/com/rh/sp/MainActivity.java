@@ -60,15 +60,15 @@ public class MainActivity extends AppCompatActivity {
         ExpMenu.Group arm = mainMenu.addGroup("Арматура",
                 ContextCompat.getDrawable(this, R.drawable.ic_arm));
         arm.addMenuItem("Нахлестка и анкеровка",
-                ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+                ContextCompat.getDrawable(this, R.drawable.ic_menu_item));
         arm.addMenuItem("Сортамент",
-                ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+                ContextCompat.getDrawable(this, R.drawable.ic_menu_item));
         arm.addMenuItem("Расчетные сопротивления",
-                ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+                ContextCompat.getDrawable(this, R.drawable.ic_menu_item));
         arm.addMenuItem("Калькулятор массы",
-                ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+                ContextCompat.getDrawable(this, R.drawable.ic_menu_item));
         arm.addMenuItem("Расчет площади",
-                ContextCompat.getDrawable(this, R.drawable.ic_test_menu));
+                ContextCompat.getDrawable(this, R.drawable.ic_menu_item));
 
         ExpMenuAdapter adapter = new ExpMenuAdapter(getApplicationContext(), mainMenu);
         listView.setAdapter(adapter);
