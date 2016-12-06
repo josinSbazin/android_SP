@@ -13,6 +13,7 @@
 
     <style name="SPSearchView" parent="Base.Widget.AppCompat.SearchView">
         <item name="searchIcon">@drawable/ic_search_icon</item>
+        <item name="searchHintIcon">@null</item>
         <item name="queryBackground">@color/white</item>
     </style>
 

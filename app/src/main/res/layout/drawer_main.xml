@@ -19,23 +19,12 @@
         android:background="@color/white"
         android:layout_alignParentTop="true">
 
-        <ImageButton
-            android:id="@+id/iButtonCloseDrawer"
-            android:layout_height="@dimen/bar_height"
-            android:layout_width="@dimen/close_drawer_button_width"
-            app:srcCompat="@drawable/ic_close_drawer"
-            android:background="@null"
-            android:onClick="onClickNavigationButton"
-            android:contentDescription="@string/close_drawer_description"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
         <android.support.v7.widget.SearchView
             android:id="@+id/searchView"
+            style="@style/SPSearchView"
+            app:layout="@layout/search_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            style="@style/SPSearchView"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
