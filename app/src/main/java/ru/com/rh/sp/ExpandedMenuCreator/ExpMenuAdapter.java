@@ -22,6 +22,7 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
         this.mMenu = menu;
     }
 
+
     private static class GroupHolder {
         TextView textView;
         ImageView imageView;
@@ -31,6 +32,10 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
     private static class ChildHolder {
         TextView textView;
         ImageView imageView;
+    }
+
+    public ExpMenu getMenu() {
+        return mMenu;
     }
 
     @Override

@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * При необходимости дополнительных функций - раскомментируйте нужные методы
  */
 
-public class ExpMenu {
+public class ExpMenu{
     private ArrayList<Group> groups;
     private Drawable groupIndicatorClose;
     private Drawable groupIndicatorOpen;
@@ -64,6 +64,32 @@ public class ExpMenu {
         return groups.size();
     }
 
+
+    /**
+     * @param query строка запроса поиска для формирования нового меню
+     * @return новое меню с учетом запроса поиска
+     */
+    public ExpMenu getMenuBySearchString(String query) {
+        ExpMenu newMenu = new ExpMenu(groupIndicatorClose, groupIndicatorOpen);
+
+        for (Group group : groups) {
+            Group newGroup = new Group(group.name, group.icon);
+            for (Group.MenuItem item : group.items) {
+                if (item.getName().toLowerCase().contains(query.toLowerCase()))
+                    newGroup.items.add(item);
+            }
+            if (newGroup.items.size() > 0) newMenu.groups.add(newGroup);
+        }
+        return newMenu;
+    }
+
+    /**
+     * @return вовзращает массив групп
+     */
+    public ArrayList<Group> getGroups() {
+        return groups;
+    }
+
     /**
      * Внутренний класс Group служит для управления группами меню
      * После создания группы в {@link ExpMenu}, можно приступат к наполнению групп
@@ -86,6 +112,10 @@ public class ExpMenu {
          */
         String getName() {
             return name;
+        }
+
+        public ArrayList<MenuItem> getItems() {
+            return items;
         }
 
         Drawable getIcon() {
