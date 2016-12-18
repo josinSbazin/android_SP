@@ -36,42 +36,33 @@ public class MainActivity extends AppCompatActivity {
 
         //назначаем создание нового меню с при поиске
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            ExpMenu currentMainMenu = mainMenuAdapter.getMenu();
 
             @Override
             public boolean onQueryTextSubmit(String query) {
+                mainMenuAdapter.filterData(query);
+                expandAll();
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                return search(newText);
-            }
-
-            private boolean search(String query) {
-                if (query.length() == 0) {
-                    //вообще, это метод пересоздания меню, но куда его деть?
-                    mExpandableListView.setAdapter(mainMenuAdapter);
-                    mExpandableListView.expandGroup(0);
-                }
-
-                ExpMenuAdapter newExpMenuAdapter = new ExpMenuAdapter(getApplicationContext(),
-                        currentMainMenu.getMenuBySearchString(query));
-                mExpandableListView.setAdapter(newExpMenuAdapter);
-
-                for (int i = 0, len = newExpMenuAdapter.getGroupCount(); i < len; i++) {
-                    mExpandableListView.expandGroup(i);
-                }
+                mainMenuAdapter.filterData(newText);
+                expandAll();
                 return false;
             }
 
+            private void expandAll() {
+                int count = mainMenuAdapter.getGroupCount();
+                for (int i = 0; i < count; i++)
+                    mExpandableListView.expandGroup(i);
+            }
         });
 
         //Назначаем воссоздание основного меню на функцию закрытия
         mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-                mExpandableListView.setAdapter(mainMenuAdapter);
+                mainMenuAdapter.filterData("");
                 mExpandableListView.expandGroup(0);
                 return false;
             }

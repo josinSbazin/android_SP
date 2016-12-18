@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import ru.com.rh.sp.R;
 
 /**
@@ -15,13 +16,14 @@ import ru.com.rh.sp.R;
 
 public class ExpMenuAdapter extends BaseExpandableListAdapter{
     private ExpMenu mMenu;
+    private ExpMenu originalMenu;
     private Context mContext;
 
     public ExpMenuAdapter(Context context, ExpMenu menu) {
         this.mContext = context;
         this.mMenu = menu;
+        this.originalMenu = menu.getMenuCopy();
     }
-
 
     private static class GroupHolder {
         TextView textView;
@@ -32,10 +34,6 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
     private static class ChildHolder {
         TextView textView;
         ImageView imageView;
-    }
-
-    public ExpMenu getMenu() {
-        return mMenu;
     }
 
     @Override
@@ -121,6 +119,12 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return false;
+        return true;
+    }
+
+    public void filterData(String query) {
+        if (query.isEmpty()) mMenu = originalMenu;
+        else mMenu = originalMenu.getMenuBySearchString(query);
+        notifyDataSetChanged();
     }
 }

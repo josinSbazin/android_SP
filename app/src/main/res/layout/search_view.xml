@@ -77,7 +77,6 @@
                 android:paddingStart="@dimen/abc_dropdownitem_text_padding_left"
                 android:paddingRight="@dimen/abc_dropdownitem_text_padding_right"
                 android:paddingEnd="@dimen/abc_dropdownitem_text_padding_right"
-                android:singleLine="true"
                 android:ellipsize="end"
                 android:background="@null"
                 android:inputType="text|textAutoComplete|textNoSuggestions"
@@ -85,7 +84,8 @@
                 android:dropDownHeight="wrap_content"
                 android:dropDownAnchor="@id/search_edit_frame"
                 android:dropDownVerticalOffset="0dip"
-                android:dropDownHorizontalOffset="0dip" />
+                android:dropDownHorizontalOffset="0dip"
+                android:maxLines="1" />
 
             <ImageView
                 android:id="@+id/search_close_btn"

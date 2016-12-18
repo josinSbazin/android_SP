@@ -68,8 +68,9 @@ public class ExpMenu{
     /**
      * @param query строка запроса поиска для формирования нового меню
      * @return новое меню с учетом запроса поиска
+     * TODO: Исправить производительность!!!
      */
-    public ExpMenu getMenuBySearchString(String query) {
+    ExpMenu getMenuBySearchString(String query) {
         ExpMenu newMenu = new ExpMenu(groupIndicatorClose, groupIndicatorOpen);
 
         for (Group group : groups) {
@@ -83,11 +84,10 @@ public class ExpMenu{
         return newMenu;
     }
 
-    /**
-     * @return вовзращает массив групп
-     */
-    public ArrayList<Group> getGroups() {
-        return groups;
+    ExpMenu getMenuCopy() {
+        ExpMenu menuCopy = new ExpMenu(groupIndicatorClose, groupIndicatorOpen);
+        menuCopy.groups.addAll(groups);
+        return menuCopy;
     }
 
     /**
