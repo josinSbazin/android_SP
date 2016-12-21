@@ -60,34 +60,22 @@ public class ExpMenu{
         return groups.get(id);
     }
 
+    ArrayList<Group> getGroups() {
+        return groups;
+    }
+
     int size() {
         return groups.size();
     }
 
-
-    /**
-     * @param query строка запроса поиска для формирования нового меню
-     * @return новое меню с учетом запроса поиска
-     * TODO: Исправить производительность!!!
-     */
-    ExpMenu getMenuBySearchString(String query) {
-        ExpMenu newMenu = new ExpMenu(groupIndicatorClose, groupIndicatorOpen);
-
-        for (Group group : groups) {
-            Group newGroup = new Group(group.name, group.icon);
-            for (Group.MenuItem item : group.items) {
-                if (item.getName().toLowerCase().contains(query.toLowerCase()))
-                    newGroup.items.add(item);
-            }
-            if (newGroup.items.size() > 0) newMenu.groups.add(newGroup);
+    ArrayList<Group> getGroupsCopy() {
+        ArrayList<Group> groups = new ArrayList<>();
+        for (Group group : this.groups) {
+            Group newGroup = new Group(group);
+            newGroup.setItems(group.items);
+            groups.add(newGroup);
         }
-        return newMenu;
-    }
-
-    ExpMenu getMenuCopy() {
-        ExpMenu menuCopy = new ExpMenu(groupIndicatorClose, groupIndicatorOpen);
-        menuCopy.groups.addAll(groups);
-        return menuCopy;
+        return groups;
     }
 
     /**
@@ -106,6 +94,18 @@ public class ExpMenu{
             this.icon = icon;
             items = new ArrayList<>();
         }
+        private Group(Group group) {
+            this.name = group.name;
+            this.icon = group.icon;
+        }
+
+        Group getCopy() {
+            return new Group(this);
+        }
+
+        void setItems(ArrayList<MenuItem> items) {
+            this.items = items;
+        }
 
         /**
          * @return вовзращает имя группы меню
@@ -114,7 +114,8 @@ public class ExpMenu{
             return name;
         }
 
-        public ArrayList<MenuItem> getItems() {
+
+        ArrayList<MenuItem> getItems() {
             return items;
         }
 

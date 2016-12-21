@@ -8,6 +8,8 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import ru.com.rh.sp.R;
 
 /**
@@ -16,13 +18,13 @@ import ru.com.rh.sp.R;
 
 public class ExpMenuAdapter extends BaseExpandableListAdapter{
     private ExpMenu mMenu;
-    private ExpMenu originalMenu;
     private Context mContext;
+    private ArrayList<ExpMenu.Group> originalGroups;
 
     public ExpMenuAdapter(Context context, ExpMenu menu) {
         this.mContext = context;
         this.mMenu = menu;
-        this.originalMenu = menu.getMenuCopy();
+        this.originalGroups = menu.getGroupsCopy();
     }
 
     private static class GroupHolder {
@@ -123,8 +125,28 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
     }
 
     public void filterData(String query) {
-        if (query.isEmpty()) mMenu = originalMenu;
-        else mMenu = originalMenu.getMenuBySearchString(query);
+        query = query.toLowerCase();
+        ArrayList<ExpMenu.Group> groups = mMenu.getGroups();
+        groups.clear();
+
+        if (query.isEmpty()) {
+            groups.addAll(originalGroups);
+        } else {
+            for (ExpMenu.Group group : originalGroups) {
+                ArrayList<ExpMenu.Group.MenuItem> newMenuItems = new ArrayList<>();
+
+                for (ExpMenu.Group.MenuItem item : group.getItems()) {
+                    if (item.getName().toLowerCase().contains(query.toLowerCase()))
+                        newMenuItems.add(item);
+                }
+
+                if (newMenuItems.size() > 0) {
+                    ExpMenu.Group newGroup = group.getCopy();
+                    newGroup.setItems(newMenuItems);
+                    groups.add(newGroup);
+                }
+            }
+        }
         notifyDataSetChanged();
     }
 }
