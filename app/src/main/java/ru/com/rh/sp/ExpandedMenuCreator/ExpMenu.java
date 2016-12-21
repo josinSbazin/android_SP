@@ -71,7 +71,7 @@ public class ExpMenu{
     ArrayList<Group> getGroupsCopy() {
         ArrayList<Group> groups = new ArrayList<>();
         for (Group group : this.groups) {
-            Group newGroup = new Group(group);
+            Group newGroup = new Group(group.name, group.icon);
             newGroup.setItems(group.items);
             groups.add(newGroup);
         }
@@ -94,13 +94,9 @@ public class ExpMenu{
             this.icon = icon;
             items = new ArrayList<>();
         }
-        private Group(Group group) {
-            this.name = group.name;
-            this.icon = group.icon;
-        }
 
         Group getCopy() {
-            return new Group(this);
+            return new Group(this.name, this.icon);
         }
 
         void setItems(ArrayList<MenuItem> items) {

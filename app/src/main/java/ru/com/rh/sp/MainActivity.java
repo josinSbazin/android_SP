@@ -16,9 +16,9 @@ import ru.com.rh.sp.ExpandedMenuCreator.ExpMenuAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ExpandableListView mExpandableListView;
     private DrawerLayout mDrawerLayout;
     private View mDrawerView;
-    private ExpandableListView mExpandableListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

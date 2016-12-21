@@ -134,12 +134,10 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
         } else {
             for (ExpMenu.Group group : originalGroups) {
                 ArrayList<ExpMenu.Group.MenuItem> newMenuItems = new ArrayList<>();
-
                 for (ExpMenu.Group.MenuItem item : group.getItems()) {
                     if (item.getName().toLowerCase().contains(query.toLowerCase()))
                         newMenuItems.add(item);
                 }
-
                 if (newMenuItems.size() > 0) {
                     ExpMenu.Group newGroup = group.getCopy();
                     newGroup.setItems(newMenuItems);
