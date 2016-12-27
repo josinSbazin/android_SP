@@ -16,9 +16,12 @@ import ru.com.rh.sp.ExpandedMenuCreator.ExpMenuAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
+    private boolean testBoolForRotate = false;
+
     private ExpandableListView mExpandableListView;
     private DrawerLayout mDrawerLayout;
     private View mDrawerView;
+    private ExpMenuAdapter mainMenuAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerView = findViewById(R.id.left_drawer);
         mExpandableListView = (ExpandableListView)findViewById(R.id.exListMenu);
 
-        final ExpMenuAdapter mainMenuAdapter = initMainMenu(mExpandableListView);
+        mainMenuAdapter = initMainMenu(mExpandableListView);
         initDrawer(mDrawerLayout);
 
         SearchView mSearchView = (SearchView) findViewById(R.id.searchView);
@@ -83,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     private ExpMenuAdapter initMainMenu(ExpandableListView listView) {
         //initialize menu
         ExpMenu mainMenu = new ExpMenu(ContextCompat.getDrawable(this, R.drawable.ic_group_close),
@@ -90,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
         ExpMenu.Group arm = mainMenu.addGroup("Арматура",
                 ContextCompat.getDrawable(this, R.drawable.ic_arm));
         arm.addMenuItem("Нахлестка и анкеровка",
-                ContextCompat.getDrawable(this, R.drawable.ic_menu_item));
+                ContextCompat.getDrawable(this, R.drawable.ic_anchor));
         arm.addMenuItem("Сортамент",
-                ContextCompat.getDrawable(this, R.drawable.ic_menu_item));
+                ContextCompat.getDrawable(this, R.drawable.ic_sortament));
         arm.addMenuItem("Расчетные сопротивления",
                 ContextCompat.getDrawable(this, R.drawable.ic_menu_item));
         arm.addMenuItem("Калькулятор массы",
@@ -105,5 +110,23 @@ public class MainActivity extends AppCompatActivity {
         listView.expandGroup(0);
 
         return adapter;
+    }
+
+
+    //Тестовый метод!!!
+    public void onClickSettings(View view) {
+        ExpMenu.Group.MenuItem menuItemOne = (ExpMenu.Group.MenuItem) mainMenuAdapter.getChild(0,0);
+        ExpMenu.Group.MenuItem menuItemTwo = (ExpMenu.Group.MenuItem) mainMenuAdapter.getChild(0,1);
+        if (testBoolForRotate) {
+            menuItemOne.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_anchor));
+            menuItemTwo.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_sortament));
+            testBoolForRotate = false;
+        }
+        else {
+            menuItemOne.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_anchor_rotate));
+            menuItemTwo.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_sortament_rotate));
+            testBoolForRotate = true;
+        }
+        mainMenuAdapter.notifyDataSetChanged();
     }
 }
