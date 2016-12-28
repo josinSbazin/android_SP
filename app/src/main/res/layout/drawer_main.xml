@@ -101,7 +101,6 @@
             android:layout_height="match_parent"
             app:srcCompat="@drawable/ic_settings"
             android:layout_weight="1"
-            android:onClick="onClickSettings"
             android:contentDescription="@string/settings_description" />
 
         <ImageButton

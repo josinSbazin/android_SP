@@ -15,9 +15,6 @@ import ru.com.rh.sp.ExpandedMenuCreator.ExpMenu;
 import ru.com.rh.sp.ExpandedMenuCreator.ExpMenuAdapter;
 
 public class MainActivity extends AppCompatActivity {
-
-    private boolean testBoolForRotate = false;
-
     private ExpandableListView mExpandableListView;
     private DrawerLayout mDrawerLayout;
     private View mDrawerView;
@@ -99,34 +96,16 @@ public class MainActivity extends AppCompatActivity {
         arm.addMenuItem("Сортамент",
                 ContextCompat.getDrawable(this, R.drawable.ic_sortament));
         arm.addMenuItem("Расчетные сопротивления",
-                ContextCompat.getDrawable(this, R.drawable.ic_menu_item));
+                ContextCompat.getDrawable(this, R.drawable.ic_r));
         arm.addMenuItem("Калькулятор массы",
-                ContextCompat.getDrawable(this, R.drawable.ic_menu_item));
+                ContextCompat.getDrawable(this, R.drawable.ic_weight));
         arm.addMenuItem("Расчет площади",
-                ContextCompat.getDrawable(this, R.drawable.ic_menu_item));
+                ContextCompat.getDrawable(this, R.drawable.ic_area));
 
         ExpMenuAdapter adapter = new ExpMenuAdapter(getApplicationContext(), mainMenu);
         listView.setAdapter(adapter);
         listView.expandGroup(0);
 
         return adapter;
-    }
-
-
-    //Тестовый метод!!!
-    public void onClickSettings(View view) {
-        ExpMenu.Group.MenuItem menuItemOne = (ExpMenu.Group.MenuItem) mainMenuAdapter.getChild(0,0);
-        ExpMenu.Group.MenuItem menuItemTwo = (ExpMenu.Group.MenuItem) mainMenuAdapter.getChild(0,1);
-        if (testBoolForRotate) {
-            menuItemOne.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_anchor));
-            menuItemTwo.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_sortament));
-            testBoolForRotate = false;
-        }
-        else {
-            menuItemOne.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_anchor_rotate));
-            menuItemTwo.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_sortament_rotate));
-            testBoolForRotate = true;
-        }
-        mainMenuAdapter.notifyDataSetChanged();
     }
 }

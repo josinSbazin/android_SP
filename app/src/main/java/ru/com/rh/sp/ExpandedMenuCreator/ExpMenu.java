@@ -136,13 +136,12 @@ public class ExpMenu{
         }
 
         /**
-         * TODO Убрать PUBLIC
          * Внутренний класс MenuItem служит для управления пунктами подменю.
          * В классе храниться следующая информация:
          * -название подменю
          * -иконка подменю
          */
-        public class MenuItem  {
+        class MenuItem  {
             private String name;
 
 
@@ -155,10 +154,6 @@ public class ExpMenu{
 
             String getName() {
                 return name;
-            }
-
-            public void setIcon(Drawable icon) {
-                this.icon = icon;
             }
 
             Drawable getIcon() {
