@@ -13,4 +13,5 @@
     <string name="about_description">about</string>
     <string name="settings_description">settings</string>
     <string name="feedback_description">feedback</string>
+    <string name="Home">Домой</string>
 </resources>

@@ -79,7 +79,7 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.group_layout, parent, false);
+            convertView = inflater.inflate(R.layout.drawer_group_layout, parent, false);
             groupHolder = new GroupHolder();
             groupHolder.imageView = (ImageView) convertView.findViewById(R.id.group_menu_image);
             groupHolder.textView = (TextView) convertView.findViewById(R.id.group_menu_text);
@@ -104,7 +104,7 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.item_layout, parent, false);
+            convertView = inflater.inflate(R.layout.drawer_item_layout, parent, false);
             childHolder = new ChildHolder();
             childHolder.imageView = (ImageView) convertView.findViewById(R.id.item_menu_image);
             childHolder.textView = (TextView) convertView.findViewById(R.id.item_menu_text);
