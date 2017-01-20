@@ -21,11 +21,15 @@ public class BaseActivity extends AppCompatActivity {
     protected DrawerLayout mDrawerLayout;
     private ExpMenuAdapter mExpMenuAdapter;
     private ExpandableListView mExpandableListView;
+    private long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Исправит ID чуть позже
+        setId(0, -1);
 
         //Toolbar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -60,10 +64,17 @@ public class BaseActivity extends AppCompatActivity {
         mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                if (id == getId()) {
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
+                    return false;
+                }
+
+                //Заменить на SWITCH?
                 if (groupPosition == 0 && childPosition == 0) {
                     Intent intent = new Intent(BaseActivity.this, AnchorActivity.class);
                     startActivity(intent);
                 }
+                //Заменить на SWITCH?
                 return false;
             }
         });
@@ -112,6 +123,7 @@ public class BaseActivity extends AppCompatActivity {
         mDrawerLayout.closeDrawer(GravityCompat.START, false);
     }
 
+
     @Override
     public void onBackPressed() {
         if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -119,6 +131,14 @@ public class BaseActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    protected void setId(long groupPosition, long childPosition) {
+        id = groupPosition << 32 | childPosition;
+    }
+
+    protected long getId() {
+        return id;
     }
 
     private ExpMenu initAndGetMenu() {
