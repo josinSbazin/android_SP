@@ -13,26 +13,30 @@ import android.view.View;
 import android.widget.ExpandableListView;
 
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.com.rh.sp.ExpandedMenuCreator.ExpMenu;
 import ru.com.rh.sp.ExpandedMenuCreator.ExpMenuAdapter;
 
 public class BaseActivity extends AppCompatActivity {
-    protected Toolbar mToolbar;
-    protected DrawerLayout mDrawerLayout;
+    @BindView(R.id.toolbar)             protected Toolbar mToolbar;
+    @BindView(R.id.drawer_layout)       protected DrawerLayout mDrawerLayout;
+    @BindView(R.id.exListMenu)          protected ExpandableListView mExpandableListView;
+    @BindView(R.id.searchView)          protected SearchView searchView;
+
     private ExpMenuAdapter mExpMenuAdapter;
-    private ExpandableListView mExpandableListView;
     private long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         //Исправит ID чуть позже
         setId(0, -1);
 
         //Toolbar
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("Главное меню");
 
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -44,9 +48,6 @@ public class BaseActivity extends AppCompatActivity {
         });
 
 
-        //Drawer
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-
         if (mDrawerLayout != null) {
             mDrawerLayout.setScrimColor(Color.TRANSPARENT);
             mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -56,11 +57,9 @@ public class BaseActivity extends AppCompatActivity {
         //Menu in Drawer
         ExpMenu menu = initAndGetMenu();
         mExpMenuAdapter = new ExpMenuAdapter(getApplicationContext(), menu);
-        mExpandableListView = (ExpandableListView)findViewById(R.id.exListMenu);
 
         mExpandableListView.setAdapter(mExpMenuAdapter);
         mExpandableListView.expandGroup(0);
-
         mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
@@ -81,9 +80,7 @@ public class BaseActivity extends AppCompatActivity {
 
 
         //Search field in Menu in Drawer
-        SearchView searchView = (SearchView) findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
             @Override
             public boolean onQueryTextSubmit(String query) {
                 mExpMenuAdapter.filterData(query);
