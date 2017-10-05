@@ -14,4 +14,10 @@
     <string name="settings_description">settings</string>
     <string name="feedback_description">feedback</string>
     <string name="Home">Домой</string>
+    <string name="main_manu_title">Главное меню</string>
+    <string name="menu_anchor_title">Нахлестка и анкеровка</string>
+    <string name="menu_sortament_title">Сортамент</string>
+    <string name="menu_r_title">Расчетные сопротивления</string>
+    <string name="menu_weight_title">Калькулятор массы</string>
+    <string name="menu_area_title">Расчет площади</string>
 </resources>

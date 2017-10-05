@@ -3,15 +3,14 @@ package ru.com.rh.sp;
 import android.os.Bundle;
 import butterknife.ButterKnife;
 
-public class AnchorActivity extends SecondaryActivity{
+public class ResistanceActivity extends SecondaryActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anchor);
+        setContentView(R.layout.activity_resistance);
         ButterKnife.bind(this);
 
-        setUpToolbar(getString(R.string.menu_anchor_title));
-
+        setUpToolbar(getString(R.string.menu_r_title));
     }
 }

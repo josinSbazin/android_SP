@@ -2,6 +2,7 @@ package ru.com.rh.sp;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,13 +20,22 @@ import ru.com.rh.sp.ExpandedMenuCreator.ExpMenu;
 import ru.com.rh.sp.ExpandedMenuCreator.ExpMenuAdapter;
 
 public class BaseActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar)             protected Toolbar mToolbar;
-    @BindView(R.id.drawer_layout)       protected DrawerLayout mDrawerLayout;
-    @BindView(R.id.exListMenu)          protected ExpandableListView mExpandableListView;
-    @BindView(R.id.searchView)          protected SearchView searchView;
+    @BindView(R.id.toolbar)
+    protected Toolbar mToolbar;
+    @BindView(R.id.drawer_layout)
+    protected DrawerLayout mDrawerLayout;
+    @BindView(R.id.exListMenu)
+    protected ExpandableListView mExpandableListView;
+    @BindView(R.id.searchView)
+    protected SearchView searchView;
 
     private ExpMenuAdapter mExpMenuAdapter;
-    private long id;
+
+    private long AnchorChildId;
+    private long SortamentChildId;
+    private long ResChildId;
+    private long WeightCalcChildId;
+    private long AreaCalcChildId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,26 +43,30 @@ public class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        //Исправит ID чуть позже
-        setId(0, -1);
+        setUpToolbar();
+        setUpDrawerAndMenu();
+    }
 
-        //Toolbar
-        mToolbar.setTitle("Главное меню");
+    @Override
+    public void onResume() {
+        super.onResume();
+        mDrawerLayout.closeDrawer(GravityCompat.START, false);
+    }
 
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mDrawerLayout != null)
-                    mDrawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+    @Override
+    public void onBackPressed() {
+        if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            this.mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
-
+    private void setUpDrawerAndMenu() {
         if (mDrawerLayout != null) {
             mDrawerLayout.setScrimColor(Color.TRANSPARENT);
             mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         }
-
 
         //Menu in Drawer
         ExpMenu menu = initAndGetMenu();
@@ -63,21 +77,14 @@ public class BaseActivity extends AppCompatActivity {
         mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                if (id == getId()) {
-                    mDrawerLayout.closeDrawer(GravityCompat.START);
-                    return false;
-                }
 
-                //Заменить на SWITCH?
-                if (groupPosition == 0 && childPosition == 0) {
-                    Intent intent = new Intent(BaseActivity.this, AnchorActivity.class);
-                    startActivity(intent);
-                }
-                //Заменить на SWITCH?
+                Intent intent = getIntentByGroupAndPosition(id);
+                if (intent != null) startActivity(intent);
+
+                //todo Заменить на SWITCH?
                 return false;
             }
         });
-
 
         //Search field in Menu in Drawer
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -113,47 +120,58 @@ public class BaseActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-        mDrawerLayout.closeDrawer(GravityCompat.START, false);
-    }
+    @Nullable
+    private Intent getIntentByGroupAndPosition(long id) {
+        Intent intent = null;
 
+        if (id == AnchorChildId) {
+            intent = new Intent(BaseActivity.this, AnchorActivity.class);
 
-    @Override
-    public void onBackPressed() {
-        if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-            this.mDrawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        } else if (id == SortamentChildId) {
+            intent = new Intent(BaseActivity.this, SortamentActivity.class);
+
+        } else if (id == ResChildId) {
+            intent = new Intent(BaseActivity.this, ResistanceActivity.class);
+
+        } else if (id == WeightCalcChildId) {
+            intent = new Intent(BaseActivity.this, WeightCalcActivity.class);
+
+        } else if (id == AreaCalcChildId) {
+            intent = new Intent(BaseActivity.this, AreaCalcActivity.class);
         }
+
+        return intent;
     }
 
-    protected void setId(long groupPosition, long childPosition) {
-        id = groupPosition << 32 | childPosition;
-    }
+    private void setUpToolbar() {
+        mToolbar.setTitle(R.string.main_manu_title);
 
-    protected long getId() {
-        return id;
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mDrawerLayout != null)
+                    mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
     }
 
     private ExpMenu initAndGetMenu() {
         //initialize menu
         ExpMenu mainMenu = new ExpMenu(ContextCompat.getDrawable(this, R.drawable.ic_group_close),
                 ContextCompat.getDrawable(this, R.drawable.ic_group_open));
-        ExpMenu.Group arm = mainMenu.addGroup("Арматура",
+        ExpMenu.Group arm = mainMenu.addGroup(getString(R.string.menu_reinforcement_title),
                 ContextCompat.getDrawable(this, R.drawable.ic_arm));
-        arm.addMenuItem("Нахлестка и анкеровка",
-                ContextCompat.getDrawable(this, R.drawable.ic_anchor));
-        arm.addMenuItem("Сортамент",
-                ContextCompat.getDrawable(this, R.drawable.ic_sortament));
-        arm.addMenuItem("Расчетные сопротивления",
-                ContextCompat.getDrawable(this, R.drawable.ic_r));
-        arm.addMenuItem("Калькулятор массы",
-                ContextCompat.getDrawable(this, R.drawable.ic_weight));
-        arm.addMenuItem("Расчет площади",
-                ContextCompat.getDrawable(this, R.drawable.ic_area));
+
+        AnchorChildId = arm.addMenuItem(getString(R.string.menu_anchor_title),
+                ContextCompat.getDrawable(this, R.drawable.ic_anchor)).getId();
+        SortamentChildId = arm.addMenuItem(getString(R.string.menu_sortament_title),
+                ContextCompat.getDrawable(this, R.drawable.ic_sortament)).getId();
+        ResChildId = arm.addMenuItem(getString(R.string.menu_r_title),
+                ContextCompat.getDrawable(this, R.drawable.ic_r)).getId();
+        WeightCalcChildId = arm.addMenuItem(getString(R.string.menu_weight_title),
+                ContextCompat.getDrawable(this, R.drawable.ic_weight)).getId();
+        AreaCalcChildId = arm.addMenuItem(getString(R.string.menu_area_title),
+                ContextCompat.getDrawable(this, R.drawable.ic_area)).getId();
 
         return mainMenu;
     }
