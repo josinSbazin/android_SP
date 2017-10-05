@@ -3,15 +3,14 @@ package ru.com.rh.sp;
 import android.os.Bundle;
 import butterknife.ButterKnife;
 
-public class AnchorActivity extends SecondaryActivity{
+public class AreaCalcActivity extends SecondaryActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anchor);
+        setContentView(R.layout.activity_area_calc);
         ButterKnife.bind(this);
 
-        setUpToolbar(getString(R.string.menu_anchor_title));
-
+        setUpToolbar(getString(R.string.menu_area_title));
     }
 }

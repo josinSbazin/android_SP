@@ -21,7 +21,6 @@ public class ExpMenu{
     private Drawable groupIndicatorClose;
     private Drawable groupIndicatorOpen;
 
-
     /**
      *
      * @param close изображение закрытого индикаора группы
@@ -52,12 +51,12 @@ public class ExpMenu{
     }
 
     /**
-     * @param id индекс возвращаемой из массива группы
+     * @param pos индекс возвращаемой из массива группы
      * @return группа из меню
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
-    Group getGroupById(int id) {
-        return groups.get(id);
+    Group getGroupByPosition(int pos) {
+        return groups.get(pos);
     }
 
     ArrayList<Group> getGroups() {
@@ -86,11 +85,13 @@ public class ExpMenu{
      */
     public class Group {
         private String name;
+        private int id;
         private Drawable icon;
         private ArrayList<MenuItem> items;
 
         Group(String name, Drawable icon) {
             this.name = name;
+            id = name.hashCode();
             this.icon = icon;
             items = new ArrayList<>();
         }
@@ -110,6 +111,7 @@ public class ExpMenu{
             return name;
         }
 
+        public int getId() {return id;}
 
         ArrayList<MenuItem> getItems() {
             return items;
@@ -119,15 +121,23 @@ public class ExpMenu{
             return icon;
         }
 
-        public void addMenuItem(String name, Drawable icon) {
-            items.add(new MenuItem(name, icon));
+        /**
+         * Добавляет пункт меню
+         * @param name - имя пункта меню
+         * @param icon - иконка пункта меню
+         * @return - добавленный экземпляр MenuItem
+         */
+        public MenuItem addMenuItem(String name, Drawable icon) {
+            MenuItem newMenuItem = new MenuItem(name, icon);
+            items.add(newMenuItem);
+            return newMenuItem;
         }
 
         /**
          * @param id индекс возвращаемого пункта подменю
          * @return вовзращает пункт подменю
          */
-        MenuItem getMenuItemById(int id) {
+        MenuItem getMenuItemByPosition(int id) {
             return items.get(id);
         }
 
@@ -141,20 +151,22 @@ public class ExpMenu{
          * -название подменю
          * -иконка подменю
          */
-        class MenuItem  {
+        public class MenuItem  {
+            private int id;
             private String name;
-
-
             private Drawable icon;
 
             MenuItem(String name, Drawable icon) {
                 this.name = name;
+                this.id = name.hashCode();
                 this.icon = icon;
             }
 
             String getName() {
                 return name;
             }
+
+            public int getId() {return id;}
 
             Drawable getIcon() {
                 return icon;

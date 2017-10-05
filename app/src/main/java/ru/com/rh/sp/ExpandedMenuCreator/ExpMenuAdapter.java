@@ -45,27 +45,27 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return mMenu.getGroupById(groupPosition).size();
+        return mMenu.getGroupByPosition(groupPosition).size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return mMenu.getGroupById(groupPosition);
+        return mMenu.getGroupByPosition(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return mMenu.getGroupById(groupPosition).getMenuItemById(childPosition);
+        return mMenu.getGroupByPosition(groupPosition).getMenuItemByPosition(childPosition);
     }
 
     @Override
     public long getGroupId(int groupPosition) {
-        return groupPosition;
+        return mMenu.getGroupByPosition(groupPosition).getId();
     }
 
     @Override
     public long getChildId(int groupPosition, int childPosition) {
-        return childPosition;
+        return mMenu.getGroupByPosition(groupPosition).getMenuItemByPosition(childPosition).getId();
     }
 
     @Override

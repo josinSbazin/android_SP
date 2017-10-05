@@ -19,6 +19,10 @@
             >
         </activity>
         <activity android:name=".AnchorActivity" />
+        <activity android:name=".WeightCalcActivity" />
+        <activity android:name=".SortamentActivity" />
+        <activity android:name=".ResistanceActivity" />
+        <activity android:name=".AreaCalcActivity"></activity>
     </application>
 
 </manifest>
