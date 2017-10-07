@@ -1,24 +1,52 @@
 <resources>
+    <!--Загаловки.-->
     <string name="app_name">СП63</string>
-    <string name="anchor_label">Анкеровка и нахлестка</string>
     <string name="title_draw_view">СВОД ПРАВИЛ</string>
-
-    <!--Пункты основного меню-->
+    <string name="anchor_label">Анкеровка и нахлестка</string>
     <string name="menu_reinforcement_title">Арматура</string>
-    <string name="close_drawer_description">close drawer</string>
-    <string name="open_drawer_description">open drawer</string>
-    <string name="expand_menu_description">expand menu</string>
-    <string name="item_icon_description">item icon</string>
-    <string name="logo_of_menu_desription">logo_of_menu</string>
-    <string name="about_description">about</string>
-    <string name="settings_description">settings</string>
-    <string name="feedback_description">feedback</string>
-    <string name="Home">Домой</string>
     <string name="main_manu_title">Главное меню</string>
     <string name="menu_anchor_title">Нахлестка и анкеровка</string>
     <string name="menu_sortament_title">Сортамент</string>
     <string name="menu_r_title">Расчетные сопротивления</string>
     <string name="menu_weight_title">Калькулятор массы</string>
     <string name="menu_area_title">Расчет площади</string>
+
+    <!--Описания-->
+    <string name="close_drawer_description">close drawer</string>
+    <string name="open_drawer_description">open drawer</string>
+    <string name="expand_menu_description">expand menu</string>
+    <string name="item_icon_description">item icon</string>
+    <string name="logo_of_menu_description">logo_of_menu</string>
+    <string name="about_description">about</string>
+    <string name="settings_description">settings</string>
+    <string name="feedback_description">feedback</string>
+    <string name="home_description">Домой</string>
+
+    <!--Названия и надписи-->
     <string name="calculate">РАССЧИТАТЬ</string>
+    <string name="diameter">Диаметр</string>
+    <string name="length">Длинна</string>
+
+    <!--Диаметры арматуры-->
+    <string-array name="reinforcement_diameters">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>10</item>
+        <item>12</item>
+        <item>14</item>
+        <item>16</item>
+        <item>18</item>
+        <item>20</item>
+        <item>22</item>
+        <item>25</item>
+        <item>28</item>
+        <item>32</item>
+        <item>36</item>
+        <item>40</item>
+    </string-array>
+
 </resources>
