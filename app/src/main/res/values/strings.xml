@@ -20,4 +20,5 @@
     <string name="menu_r_title">Расчетные сопротивления</string>
     <string name="menu_weight_title">Калькулятор массы</string>
     <string name="menu_area_title">Расчет площади</string>
+    <string name="calculate">РАССЧИТАТЬ</string>
 </resources>
