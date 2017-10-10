@@ -26,6 +26,7 @@
     <string name="calculate">РАССЧИТАТЬ</string>
     <string name="diameter">Диаметр</string>
     <string name="length">Длинна</string>
+    <string name="diam_symbol">Ø</string>
 
     <!--Диаметры арматуры-->
     <string-array name="reinforcement_diameters">
@@ -47,6 +48,15 @@
         <item>32</item>
         <item>36</item>
         <item>40</item>
+    </string-array>
+
+    <!--Единцы измерения-->
+    <string-array name="length_units">
+        <item>мм</item>
+        <item>см</item>
+        <item>дм</item>
+        <item>м</item>
+        <item>км</item>
     </string-array>
 
 </resources>

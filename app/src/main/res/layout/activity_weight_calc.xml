@@ -27,38 +27,90 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/diameter" />
+                    android:layout_marginBottom="@dimen/weight_title_margin"
+                    android:layout_marginTop="@dimen/weight_title_margin"
+                    android:text="@string/diameter"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text" />
 
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/reinforcement_diameters"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/margin_between_diam"
+                        android:layout_marginRight="@dimen/margin_between_diam"
+                        android:gravity="center"
+                        android:text="@string/diam_symbol"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/big_text" />
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="@dimen/spinner_width"
+                        android:layout_height="@dimen/spinner_height"
+                        android:background="@drawable/edit_fields_background"
+                        android:entries="@array/reinforcement_diameters"
+                        android:textAlignment="center" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/length" />
+                    android:layout_marginBottom="@dimen/weight_title_margin"
+                    android:layout_marginTop="@dimen/weight_title_margin"
+                    android:text="@string/length"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text" />
 
-                <EditText
-                    android:id="@+id/editText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/spinner_height"
+                        android:background="@drawable/edit_fields_background"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:selectAllOnFocus="true" />
+
+                    <Spinner
+                    android:id="@+id/unitSpinner"
+                    android:layout_width="@dimen/spinner_width"
+                    android:layout_height="@dimen/spinner_height"
+                    android:background="@drawable/edit_fields_background"
+                    android:entries="@array/length_units"
+                    android:textAlignment="center" />
+
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

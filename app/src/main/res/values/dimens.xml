@@ -13,5 +13,11 @@
     <dimen name="shadow_height">2dp</dimen>
 
     <!-- Text sizes. -->
+    <dimen name="very_big_text">20sp</dimen>
     <dimen name="big_text">18sp</dimen>
+    <dimen name="medium_text">16sp</dimen>
+    <dimen name="weight_title_margin">8dp</dimen>
+    <dimen name="margin_between_diam">8dp</dimen>
+    <dimen name="spinner_width">40dp</dimen>
+    <dimen name="spinner_height">30dp</dimen>
 </resources>
