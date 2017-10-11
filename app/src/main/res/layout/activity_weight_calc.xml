@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,7 +13,6 @@
     <include layout="@layout/toolbar" />
 
     <ScrollView
-        android:id="@+id/weight_main_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/calculateContainer"
@@ -22,96 +22,142 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginEnd="@dimen/layout_main_margin"
+            android:layout_marginLeft="@dimen/layout_main_margin"
+            android:layout_marginRight="@dimen/layout_main_margin"
+            android:layout_marginStart="@dimen/layout_main_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_between_diam"
+                android:layout_marginTop="@dimen/layout_main_margin"
+                android:text="@string/diameter"
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_text"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spn_diameter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_between_diam"
+                android:entries="@array/reinforcement_diameters"
+                android:spinnerMode="dialog" />
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_marginBottom="@dimen/margin_between_diam"
+                android:layout_marginTop="@dimen/layout_main_margin"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/weight_title_margin"
-                    android:layout_marginTop="@dimen/weight_title_margin"
-                    android:text="@string/diameter"
-                    android:textAlignment="center"
+                    android:text="@string/length"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/medium_text" />
+                    android:textSize="@dimen/medium_text"
+                    android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tw_one_rebar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/one_rebar"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="@dimen/margin_between_diam"
-                        android:layout_marginRight="@dimen/margin_between_diam"
-                        android:gravity="center"
-                        android:text="@string/diam_symbol"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/big_text" />
-
-                    <Spinner
-                        android:id="@+id/spinner"
-                        android:layout_width="@dimen/spinner_width"
-                        android:layout_height="@dimen/spinner_height"
-                        android:background="@drawable/edit_fields_background"
-                        android:entries="@array/reinforcement_diameters"
-                        android:textAlignment="center" />
-                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_length"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_3000"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:selectAllOnFocus="true" />
+
+                <Spinner
+                    android:id="@+id/spn_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/length_units" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/weight_title_margin"
-                    android:layout_marginTop="@dimen/weight_title_margin"
-                    android:text="@string/length"
-                    android:textAlignment="center"
+                    android:layout_marginBottom="@dimen/margin_between_diam"
+                    android:layout_marginTop="@dimen/layout_main_margin"
+                    android:text="@string/rebar_count"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/medium_text" />
-
+                    android:textSize="@dimen/medium_text"
+                    android:textStyle="bold" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/editText"
-                        android:layout_width="100dp"
-                        android:layout_height="@dimen/spinner_height"
-                        android:background="@drawable/edit_fields_background"
+                        android:id="@+id/et_count"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_1"
                         android:ems="10"
                         android:inputType="number"
                         android:selectAllOnFocus="true" />
 
-                    <Spinner
-                    android:id="@+id/unitSpinner"
-                    android:layout_width="@dimen/spinner_width"
-                    android:layout_height="@dimen/spinner_height"
-                    android:background="@drawable/edit_fields_background"
-                    android:entries="@array/length_units"
-                    android:textAlignment="center" />
+                    <ImageButton
+                        android:id="@+id/ibtn_count_plus"
+                        android:layout_marginLeft="@dimen/margin_between_diam"
+                        android:layout_marginStart="@dimen/margin_between_diam"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_button_background"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/ic_plus_button" />
+
+                    <ImageButton
+                        android:id="@+id/ibtn_count_minus"
+                        android:layout_marginLeft="@dimen/margin_between_diam"
+                        android:layout_marginStart="@dimen/margin_between_diam"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_button_background"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/ic_minus_button" />
 
                 </LinearLayout>
 
             </LinearLayout>
+
+            <Switch
+                android:id="@+id/sw_multiple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_between_diam"
+                android:layout_marginTop="@dimen/margin_between_diam"
+                android:text="@string/multiple_rebar" />
+
+            <include layout="@layout/divider" />
+
         </LinearLayout>
     </ScrollView>
 

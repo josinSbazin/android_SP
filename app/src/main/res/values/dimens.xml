@@ -20,4 +20,5 @@
     <dimen name="margin_between_diam">8dp</dimen>
     <dimen name="spinner_width">40dp</dimen>
     <dimen name="spinner_height">30dp</dimen>
+    <dimen name="layout_main_margin">18dp</dimen>
 </resources>

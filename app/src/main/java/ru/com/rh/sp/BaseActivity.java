@@ -48,12 +48,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        mDrawerLayout.closeDrawer(GravityCompat.START, false);
-    }
-
-    @Override
     public void onBackPressed() {
         if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             this.mDrawerLayout.closeDrawer(GravityCompat.START);

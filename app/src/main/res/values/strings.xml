@@ -24,30 +24,35 @@
 
     <!--Названия и надписи-->
     <string name="calculate">РАССЧИТАТЬ</string>
-    <string name="diameter">Диаметр</string>
-    <string name="length">Длинна</string>
+    <string name="diameter">• Диаметр</string>
+    <string name="length">• Длинна</string>
+    <string name="rebar_count">• Количество стержней</string>
+    <string name="one_rebar">" одного стержня"</string>
     <string name="diam_symbol">Ø</string>
+    <string name="multiple_rebar">Несколько стержней</string>
+    <string name="_1">1</string>
+    <string name="_3000">3000</string>
 
     <!--Диаметры арматуры-->
     <string-array name="reinforcement_diameters">
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>10</item>
-        <item>12</item>
-        <item>14</item>
-        <item>16</item>
-        <item>18</item>
-        <item>20</item>
-        <item>22</item>
-        <item>25</item>
-        <item>28</item>
-        <item>32</item>
-        <item>36</item>
-        <item>40</item>
+        <item>Ø 3</item>
+        <item>Ø 4</item>
+        <item>Ø 5</item>
+        <item>Ø 6</item>
+        <item>Ø 7</item>
+        <item>Ø 8</item>
+        <item>Ø 10</item>
+        <item>Ø 12</item>
+        <item>Ø 14</item>
+        <item>Ø 16</item>
+        <item>Ø 18</item>
+        <item>Ø 20</item>
+        <item>Ø 22</item>
+        <item>Ø 25</item>
+        <item>Ø 28</item>
+        <item>Ø 32</item>
+        <item>Ø 36</item>
+        <item>Ø 40</item>
     </string-array>
 
     <!--Единцы измерения-->
