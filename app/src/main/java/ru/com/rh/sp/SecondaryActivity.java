@@ -7,7 +7,8 @@ import android.view.View;
 import butterknife.BindView;
 
 public abstract class SecondaryActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar)             protected Toolbar mToolbar;
+    @BindView(R.id.toolbar)
+    protected Toolbar mToolbar;
 
     /**
      * Устанавливает настройки тулбара для второстепенной активности

@@ -1,102 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/zero_margin"
-    android:paddingLeft="@dimen/zero_margin"
-    android:paddingRight="@dimen/zero_margin"
-    android:paddingTop="@dimen/zero_margin"
-    tools:context="ru.com.rh.sp.WeightCalcActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <include layout="@layout/toolbar" />
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="ru.com.rh.sp.WeightCalc.WeightCalcViewModel"/>
+    </data>
 
-    <ScrollView
+    <RelativeLayout
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/calculateContainer"
-        android:layout_below="@+id/toolbar"
-        tools:ignore="UnknownIdInLayout">
+        android:paddingBottom="@dimen/zero_margin"
+        android:paddingLeft="@dimen/zero_margin"
+        android:paddingRight="@dimen/zero_margin"
+        android:paddingTop="@dimen/zero_margin"
+        tools:context="ru.com.rh.sp.WeightCalc.WeightCalcActivity">
 
-        <LinearLayout
+        <include layout="@layout/toolbar" />
+
+        <ScrollView
+            android:id="@+id/svMain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/layout_main_margin"
-            android:layout_marginLeft="@dimen/layout_main_margin"
-            android:layout_marginRight="@dimen/layout_main_margin"
-            android:layout_marginStart="@dimen/layout_main_margin"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_between_diam"
-                android:layout_marginTop="@dimen/layout_main_margin"
-                android:text="@string/diameter"
-                android:textColor="@color/black"
-                android:textSize="@dimen/medium_text"
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/spn_diameter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_between_diam"
-                android:entries="@array/reinforcement_diameters"
-                android:spinnerMode="dialog" />
+            android:layout_height="match_parent"
+            android:layout_above="@+id/calculateContainer"
+            android:layout_below="@+id/toolbar"
+            tools:ignore="UnknownIdInLayout">
 
             <LinearLayout
+                android:animateLayoutChanges="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_between_diam"
-                android:layout_marginTop="@dimen/layout_main_margin"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/length"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/medium_text"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tw_one_rebar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/one_rebar"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/medium_text"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/et_length"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/_3000"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:selectAllOnFocus="true" />
-
-                <Spinner
-                    android:id="@+id/spn_unit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/length_units" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/layout_main_margin"
+                android:layout_marginLeft="@dimen/layout_main_margin"
+                android:layout_marginRight="@dimen/layout_main_margin"
+                android:layout_marginStart="@dimen/layout_main_margin"
                 android:orientation="vertical">
 
                 <TextView
@@ -104,62 +46,139 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_between_diam"
                     android:layout_marginTop="@dimen/layout_main_margin"
-                    android:text="@string/rebar_count"
+                    android:text="@string/diameter"
                     android:textColor="@color/black"
                     android:textSize="@dimen/medium_text"
                     android:textStyle="bold" />
 
-                <LinearLayout
+                <Spinner
+                    android:id="@+id/spn_diameter"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_between_diam"
+                    android:entries="@array/reinforcement_diameters"
+                    android:spinnerMode="dialog" />
 
-                    <EditText
-                        android:id="@+id/et_count"
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/_1"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:selectAllOnFocus="true" />
+                <LinearLayout
+                    android:animateLayoutChanges="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_between_diam"
+                    android:layout_marginTop="@dimen/layout_main_margin"
+                    android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/ibtn_count_plus"
-                        android:layout_marginLeft="@dimen/margin_between_diam"
-                        android:layout_marginStart="@dimen/margin_between_diam"
-                        android:layout_gravity="center"
-                        android:background="@drawable/circle_button_background"
-                        android:layout_width="0dp"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_plus_button" />
+                        android:text="@string/length"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text"
+                        android:textStyle="bold" />
 
-                    <ImageButton
-                        android:id="@+id/ibtn_count_minus"
-                        android:layout_marginLeft="@dimen/margin_between_diam"
-                        android:layout_marginStart="@dimen/margin_between_diam"
-                        android:layout_gravity="center"
-                        android:background="@drawable/circle_button_background"
-                        android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/tw_one_rebar"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_minus_button" />
+                        android:text="@string/one_rebar"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text"
+                        android:visibility="@{viewModel.multiplySwitchOn ? View.VISIBLE : View.GONE}"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_length"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:selectAllOnFocus="true"
+                        android:text="@string/_3000" />
+
+                    <Spinner
+                        android:id="@+id/spn_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/length_units" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rebar_count_block"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.multiplySwitchOn ? View.VISIBLE : View.GONE}"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_between_diam"
+                        android:layout_marginTop="@dimen/layout_main_margin"
+                        android:text="@string/rebar_count"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/et_count"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:selectAllOnFocus="true"
+                            android:text="@string/_1" />
+
+                        <ImageButton
+                            android:id="@+id/ibtn_count_plus"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/margin_between_diam"
+                            android:layout_marginStart="@dimen/margin_between_diam"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_background"
+                            app:srcCompat="@drawable/ic_plus_button" />
+
+                        <ImageButton
+                            android:id="@+id/ibtn_count_minus"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/margin_between_diam"
+                            android:layout_marginStart="@dimen/margin_between_diam"
+                            android:layout_weight="1"
+                            android:background="@drawable/circle_button_background"
+                            app:srcCompat="@drawable/ic_minus_button" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/sw_multiply"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_between_diam"
+                    android:layout_marginTop="@dimen/margin_between_diam"
+                    android:text="@string/multiple_rebar"
+                    android:onClick="@{() -> viewModel.changeSwitch()}"/>
+
+                <include layout="@layout/divider" />
+
             </LinearLayout>
+        </ScrollView>
 
-            <Switch
-                android:id="@+id/sw_multiple"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_between_diam"
-                android:layout_marginTop="@dimen/margin_between_diam"
-                android:text="@string/multiple_rebar" />
-
-            <include layout="@layout/divider" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <include layout="@layout/calculate_button" />
-</RelativeLayout>
+        <include layout="@layout/calculate_button" />
+    </RelativeLayout>
+</layout>

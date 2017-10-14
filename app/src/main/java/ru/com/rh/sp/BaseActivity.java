@@ -18,18 +18,19 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.com.rh.sp.ExpandedMenuCreator.ExpMenu;
 import ru.com.rh.sp.ExpandedMenuCreator.ExpMenuAdapter;
+import ru.com.rh.sp.WeightCalc.WeightCalcActivity;
 
 public class BaseActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
-    protected Toolbar mToolbar;
+    protected Toolbar toolbar;
     @BindView(R.id.drawer_layout)
-    protected DrawerLayout mDrawerLayout;
+    protected DrawerLayout drawerLayout;
     @BindView(R.id.exListMenu)
-    protected ExpandableListView mExpandableListView;
+    protected ExpandableListView expandableListView;
     @BindView(R.id.searchView)
     protected SearchView searchView;
 
-    private ExpMenuAdapter mExpMenuAdapter;
+    private ExpMenuAdapter expMenuAdapter;
 
     private long AnchorChildId;
     private long SortamentChildId;
@@ -49,26 +50,26 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-            this.mDrawerLayout.closeDrawer(GravityCompat.START);
+        if (this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            this.drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
     }
 
     private void setUpDrawerAndMenu() {
-        if (mDrawerLayout != null) {
-            mDrawerLayout.setScrimColor(Color.TRANSPARENT);
-            mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+        if (drawerLayout != null) {
+            drawerLayout.setScrimColor(Color.TRANSPARENT);
+            drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         }
 
         //Menu in Drawer
         ExpMenu menu = initAndGetMenu();
-        mExpMenuAdapter = new ExpMenuAdapter(getApplicationContext(), menu);
+        expMenuAdapter = new ExpMenuAdapter(getApplicationContext(), menu);
 
-        mExpandableListView.setAdapter(mExpMenuAdapter);
-        mExpandableListView.expandGroup(0);
-        mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+        expandableListView.setAdapter(expMenuAdapter);
+        expandableListView.expandGroup(0);
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 
@@ -84,22 +85,22 @@ public class BaseActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                mExpMenuAdapter.filterData(query);
+                expMenuAdapter.filterData(query);
                 expandAll();
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                mExpMenuAdapter.filterData(newText);
+                expMenuAdapter.filterData(newText);
                 expandAll();
                 return false;
             }
 
             private void expandAll() {
-                int count = mExpMenuAdapter.getGroupCount();
+                int count = expMenuAdapter.getGroupCount();
                 for (int i = 0; i < count; i++)
-                    mExpandableListView.expandGroup(i);
+                    expandableListView.expandGroup(i);
             }
         });
 
@@ -107,8 +108,8 @@ public class BaseActivity extends AppCompatActivity {
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-                mExpMenuAdapter.filterData("");
-                mExpandableListView.expandGroup(0);
+                expMenuAdapter.filterData("");
+                expandableListView.expandGroup(0);
                 return false;
             }
         });
@@ -138,13 +139,13 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void setUpToolbar() {
-        mToolbar.setTitle(R.string.main_manu_title);
+        toolbar.setTitle(R.string.main_manu_title);
 
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mDrawerLayout != null)
-                    mDrawerLayout.openDrawer(GravityCompat.START);
+                if (drawerLayout != null)
+                    drawerLayout.openDrawer(GravityCompat.START);
             }
         });
     }
