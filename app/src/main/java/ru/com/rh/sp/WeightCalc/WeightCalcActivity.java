@@ -7,12 +7,17 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
+import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.Switch;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ru.com.rh.sp.Data.RebarDiameters;
 import ru.com.rh.sp.R;
 import ru.com.rh.sp.SecondaryActivity;
 import ru.com.rh.sp.databinding.ActivityWeightCalcBinding;
@@ -20,7 +25,7 @@ import ru.com.rh.sp.databinding.ActivityWeightCalcBinding;
 public class WeightCalcActivity extends SecondaryActivity {
 
     private ActivityWeightCalcBinding binding;
-    private WeightCalcViewModel viewModel;
+    private WeightCalcPresenter presenter;
 
     @BindView(R.id.sw_multiply)
     Switch multiplySwitch;
@@ -34,18 +39,33 @@ public class WeightCalcActivity extends SecondaryActivity {
     @BindView(R.id.et_length)
     EditText editTextLength;
 
+    @BindView(R.id.ibtn_count_plus)
+    ImageButton ibtnCountPlus;
+
+    @BindView(R.id.ibtn_count_minus)
+    ImageButton ibtnCountMinus;
+
+    @BindView(R.id.spn_diameter)
+    Spinner spnDiameters;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setUpBindings();
-        setUpClickListeners();
+        setUpListeners();
         setUpToolbar(getString(R.string.menu_weight_title));
+        fillSpinners();
+    }
+
+    private void fillSpinners() {
+        spnDiameters.setAdapter(new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_dropdown_item, RebarDiameters.values()));
     }
 
     private void setUpBindings() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_weight_calc);
-        viewModel = new WeightCalcViewModel(binding);
-        binding.setViewModel(viewModel);
+        presenter = new WeightCalcPresenter(binding);
+        binding.setPresenter(presenter);
         ButterKnife.bind(this);
     }
 
@@ -54,12 +74,13 @@ public class WeightCalcActivity extends SecondaryActivity {
         editText.getGlobalVisibleRect(outRect);
         if (!outRect.contains((int) event.getRawX(), (int) event.getRawY())) {
             editText.clearFocus();
-            InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) v.getContext()
+                    .getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
         }
     }
 
-    private void setUpClickListeners() {
+    private void setUpListeners() {
         scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

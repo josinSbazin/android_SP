@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
-            name="viewModel"
-            type="ru.com.rh.sp.WeightCalc.WeightCalcViewModel"/>
+            name="presenter"
+            type="ru.com.rh.sp.WeightCalc.WeightCalcPresenter" />
     </data>
 
     <RelativeLayout
-        android:descendantFocusability="beforeDescendants"
-        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
         android:paddingBottom="@dimen/zero_margin"
         android:paddingLeft="@dimen/zero_margin"
         android:paddingRight="@dimen/zero_margin"
@@ -32,39 +34,50 @@
             tools:ignore="UnknownIdInLayout">
 
             <LinearLayout
-                android:animateLayoutChanges="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/layout_main_margin"
                 android:layout_marginLeft="@dimen/layout_main_margin"
                 android:layout_marginRight="@dimen/layout_main_margin"
                 android:layout_marginStart="@dimen/layout_main_margin"
+                android:animateLayoutChanges="true"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_between_diam"
                     android:layout_marginTop="@dimen/layout_main_margin"
-                    android:text="@string/diameter"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/medium_text"
-                    android:textStyle="bold" />
+                    android:animateLayoutChanges="true"
+                    android:orientation="horizontal">
 
-                <Spinner
-                    android:id="@+id/spn_diameter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_between_diam"
-                    android:entries="@array/reinforcement_diameters"
-                    android:spinnerMode="dialog" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/diameter"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
 
                 <LinearLayout
-                    android:animateLayoutChanges="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spn_diameter"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_between_diam"
-                    android:layout_marginTop="@dimen/layout_main_margin"
+                    android:layout_marginTop="4dp"
+                    android:animateLayoutChanges="true"
                     android:orientation="horizontal">
 
                     <TextView
@@ -82,8 +95,8 @@
                         android:text="@string/one_rebar"
                         android:textColor="@color/black"
                         android:textSize="@dimen/medium_text"
-                        android:visibility="@{viewModel.multiplySwitchOn ? View.VISIBLE : View.GONE}"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:visibility="@{presenter.multiplySwitchOn ? View.VISIBLE : View.GONE}" />
 
                 </LinearLayout>
 
@@ -113,8 +126,8 @@
                     android:id="@+id/rebar_count_block"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="@{viewModel.multiplySwitchOn ? View.VISIBLE : View.GONE}"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="@{presenter.multiplySwitchOn ? View.VISIBLE : View.GONE}">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -148,6 +161,7 @@
                             android:layout_marginStart="@dimen/margin_between_diam"
                             android:layout_weight="1"
                             android:background="@drawable/circle_button_background"
+                            android:onClick="@{() -> presenter.incrementOrDecrementCount(true)}"
                             app:srcCompat="@drawable/ic_plus_button" />
 
                         <ImageButton
@@ -159,7 +173,48 @@
                             android:layout_marginStart="@dimen/margin_between_diam"
                             android:layout_weight="1"
                             android:background="@drawable/circle_button_background"
+                            android:onClick="@{() -> presenter.incrementOrDecrementCount(false)}"
                             app:srcCompat="@drawable/ic_minus_button" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/price_block"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{presenter.priceSwitchOn ? View.VISIBLE : View.GONE}">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_between_diam"
+                        android:layout_marginTop="@dimen/layout_main_margin"
+                        android:text="@string/price"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/et_price"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:selectAllOnFocus="true"
+                            android:text="@string/_1000" />
+
+                        <Spinner
+                            android:id="@+id/price_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/price_units" />
 
                     </LinearLayout>
 
@@ -171,8 +226,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_between_diam"
                     android:layout_marginTop="@dimen/margin_between_diam"
-                    android:text="@string/multiple_rebar"
-                    android:onClick="@{() -> viewModel.changeSwitch()}"/>
+                    android:onClick="@{() -> presenter.changeMultiplySwitch()}"
+                    android:text="@string/multiple_rebar" />
+
+                <Switch
+                    android:id="@+id/sw_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_between_diam"
+                    android:layout_marginTop="@dimen/margin_between_diam"
+                    android:onClick="@{() -> presenter.changePriceSwitch()}"
+                    android:text="@string/calculate_price" />
 
                 <include layout="@layout/divider" />
 

@@ -32,6 +32,9 @@
     <string name="multiple_rebar">Несколько стержней</string>
     <string name="_1">1</string>
     <string name="_3000">3000</string>
+    <string name="calculate_price">Считать стоимость</string>
+    <string name="price">• Цена</string>
+    <string name="_1000">1000</string>
 
     <!--Диаметры арматуры-->
     <string-array name="reinforcement_diameters">
@@ -62,6 +65,11 @@
         <item>дм</item>
         <item>м</item>
         <item>км</item>
+    </string-array>
+
+    <string-array name="price_units">
+        <item>за метр</item>
+        <item>за тонну</item>
     </string-array>
 
 </resources>
