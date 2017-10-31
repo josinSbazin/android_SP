@@ -59,7 +59,6 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -117,8 +116,7 @@
                     <Spinner
                         android:id="@+id/spn_unit"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:entries="@array/length_units" />
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
@@ -206,15 +204,14 @@
                             android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:ems="10"
-                            android:inputType="number"
+                            android:inputType="numberDecimal"
                             android:selectAllOnFocus="true"
                             android:text="@string/_1000" />
 
                         <Spinner
-                            android:id="@+id/price_unit"
+                            android:id="@+id/spn_price_unit"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/price_units" />
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
 
@@ -234,15 +231,88 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_between_diam"
-                    android:layout_marginTop="@dimen/margin_between_diam"
                     android:onClick="@{() -> presenter.changePriceSwitch()}"
                     android:text="@string/calculate_price" />
 
                 <include layout="@layout/divider" />
 
+                <LinearLayout
+                    android:id="@+id/result_block"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/layout_main_margin"
+                        android:text="@string/result_label"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medium_text"
+                        android:textStyle="bold|italic" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/result_rows">
+
+                        <include
+                            android:id="@+id/tv_rebar_name"
+                            layout="@layout/result_item" />
+
+                        <include
+                            android:id="@+id/tv_one_item_weight"
+                            layout="@layout/result_item" />
+
+                        <include
+                            android:id="@+id/tv_one_meter_price"
+                            layout="@layout/result_item" />
+
+                        <include
+                            android:id="@+id/tv_one_ton_price"
+                            layout="@layout/result_item" />
+
+                        <include
+                            android:id="@+id/tv_one_stick_weight"
+                            layout="@layout/result_item" />
+
+                        <include
+                            android:id="@+id/tv_one_stick_price"
+                            layout="@layout/result_item" />
+
+                        <include layout="@layout/margin_view_item" />
+
+                        <include layout="@layout/divider" />
+
+                        <include
+                            android:id="@+id/tv_result_price"
+                            layout="@layout/bold_result_item" />
+
+                        <include
+                            android:id="@+id/tv_all_items_weight"
+                            layout="@layout/bold_result_item" />
+
+                        <include layout="@layout/margin_view_item" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_error"
+                        android:text="@string/error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/big_text"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textStyle="bold"
+                        android:visibility="gone"/>
+                </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
 
-        <include layout="@layout/calculate_button" />
+        <include
+            layout="@layout/calculate_button" />
+
     </RelativeLayout>
 </layout>

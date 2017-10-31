@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/layout_result_margin"
+    android:textColor="@color/black"
+    android:textSize="@dimen/normal_text"
+    android:textStyle="italic"
+    tools:text="• Масса 1 м - 2 кг" />

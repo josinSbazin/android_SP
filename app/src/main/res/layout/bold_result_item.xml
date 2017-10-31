@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_result_price"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/layout_result_margin"
+    android:textColor="@color/black"
+    android:textSize="@dimen/medium_text"
+    android:textStyle="bold"
+    tools:text="• Общая стоимость - 10000" />

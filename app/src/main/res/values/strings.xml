@@ -34,42 +34,15 @@
     <string name="_3000">3000</string>
     <string name="calculate_price">Считать стоимость</string>
     <string name="price">• Цена</string>
-    <string name="_1000">1000</string>
-
-    <!--Диаметры арматуры-->
-    <string-array name="reinforcement_diameters">
-        <item>Ø 3</item>
-        <item>Ø 4</item>
-        <item>Ø 5</item>
-        <item>Ø 6</item>
-        <item>Ø 7</item>
-        <item>Ø 8</item>
-        <item>Ø 10</item>
-        <item>Ø 12</item>
-        <item>Ø 14</item>
-        <item>Ø 16</item>
-        <item>Ø 18</item>
-        <item>Ø 20</item>
-        <item>Ø 22</item>
-        <item>Ø 25</item>
-        <item>Ø 28</item>
-        <item>Ø 32</item>
-        <item>Ø 36</item>
-        <item>Ø 40</item>
-    </string-array>
-
-    <!--Единцы измерения-->
-    <string-array name="length_units">
-        <item>мм</item>
-        <item>см</item>
-        <item>дм</item>
-        <item>м</item>
-        <item>км</item>
-    </string-array>
-
-    <string-array name="price_units">
-        <item>за метр</item>
-        <item>за тонну</item>
-    </string-array>
+    <string name="_1000">1000.00</string>
+    <string name="result_label">РЕЗУЛЬТАТ:</string>
+    <string name="rebar_name">Арматура - %1$s</string>
+    <string name="one_item_weight_name">Масса 1 %1$s - %2$.3f %3$s</string>
+    <string name="one_item_price_name">Стоимость 1 %1$s - %2$.2f</string>
+    <string name="error">ОШИБКА!</string>
+    <string name="one_stick_price_name">Стоимость 1 стержня длинной %1$d %2$s - %3$.2f</string>
+    <string name="one_stick_weight_name">Масса 1 стержня длинной %1$d %2$s - %3$.3f кг</string>
+    <string name="result_weight_name">Общая масса - %1$.3f кг</string>
+    <string name="result_price_name">Общая стоимость - %1$.2f</string>
 
 </resources>
