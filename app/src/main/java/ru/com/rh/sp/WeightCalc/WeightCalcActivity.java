@@ -75,11 +75,11 @@ public class WeightCalcActivity extends SecondaryActivity {
     }
 
     private void fillSpinners() {
-        spnDiameters.setAdapter(new ArrayAdapter<RebarDiameters>(
+        spnDiameters.setAdapter(new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_dropdown_item, RebarDiameters.values()));
-        spnUmits.setAdapter(new ArrayAdapter<LinearUnits>(
+        spnUmits.setAdapter(new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_dropdown_item, LinearUnits.values()));
-        spnPriceUnit.setAdapter(new ArrayAdapter<PriceUnits>(
+        spnPriceUnit.setAdapter(new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_dropdown_item, PriceUnits.values()));
     }
 

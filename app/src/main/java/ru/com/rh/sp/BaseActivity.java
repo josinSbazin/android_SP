@@ -16,6 +16,7 @@ import android.widget.ExpandableListView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ru.com.rh.sp.AreaCalc.AreaCalcActivity;
 import ru.com.rh.sp.ExpandedMenuCreator.ExpMenu;
 import ru.com.rh.sp.ExpandedMenuCreator.ExpMenuAdapter;
 import ru.com.rh.sp.WeightCalc.WeightCalcActivity;

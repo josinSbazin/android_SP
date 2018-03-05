@@ -1,7 +1,9 @@
-package ru.com.rh.sp;
+package ru.com.rh.sp.AreaCalc;
 
 import android.os.Bundle;
 import butterknife.ButterKnife;
+import ru.com.rh.sp.R;
+import ru.com.rh.sp.SecondaryActivity;
 
 public class AreaCalcActivity extends SecondaryActivity {
 

@@ -22,7 +22,7 @@
         <activity android:name=".WeightCalc.WeightCalcActivity" />
         <activity android:name=".SortamentActivity" />
         <activity android:name=".ResistanceActivity" />
-        <activity android:name=".AreaCalcActivity"></activity>
+        <activity android:name=".AreaCalc.AreaCalcActivity"></activity>
     </application>
 
 </manifest>
