@@ -1,4 +1,4 @@
-package ru.com.rh.sp.ExpandedMenuCreator;
+package ru.com.rh.sp.expandedMenuCreator;
 
 
 import android.graphics.drawable.Drawable;

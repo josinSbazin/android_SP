@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.3'
+    compileSdkVersion 27
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "ru.com.rh.sp"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -19,8 +19,8 @@ android {
     }
     productFlavors {}
 
-    dataBinding{
-        enabled = true;
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -31,9 +31,14 @@ dependencies {
     })
 
 
-    compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.android.support:design:25.3.0'
+    compile 'com.android.support:appcompat-v7:27.1.0'
+    compile 'com.android.support:design:27.1.0'
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.arello-mobile:moxy:1.5.3'
+    compile 'com.arello-mobile:moxy-android:1.5.3'
+    compile 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
+    annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
 }

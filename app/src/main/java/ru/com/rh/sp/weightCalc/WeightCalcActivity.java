@@ -1,7 +1,6 @@
-package ru.com.rh.sp.WeightCalc;
+package ru.com.rh.sp.weightCalc;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,9 +17,9 @@ import android.widget.Switch;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ru.com.rh.sp.Data.LinearUnits;
-import ru.com.rh.sp.Data.PriceUnits;
-import ru.com.rh.sp.Data.RebarDiameters;
+import ru.com.rh.sp.data.LinearUnits;
+import ru.com.rh.sp.data.PriceUnits;
+import ru.com.rh.sp.data.RebarDiameters;
 import ru.com.rh.sp.R;
 import ru.com.rh.sp.SecondaryActivity;
 import ru.com.rh.sp.databinding.ActivityWeightCalcBinding;

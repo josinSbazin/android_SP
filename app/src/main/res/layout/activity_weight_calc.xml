@@ -9,7 +9,7 @@
 
         <variable
             name="presenter"
-            type="ru.com.rh.sp.WeightCalc.WeightCalcPresenter" />
+            type="ru.com.rh.sp.weightCalc.WeightCalcPresenter" />
     </data>
 
     <RelativeLayout
@@ -21,7 +21,7 @@
         android:paddingLeft="@dimen/zero_margin"
         android:paddingRight="@dimen/zero_margin"
         android:paddingTop="@dimen/zero_margin"
-        tools:context="ru.com.rh.sp.WeightCalc.WeightCalcActivity">
+        tools:context="ru.com.rh.sp.weightCalc.WeightCalcActivity">
 
         <include layout="@layout/toolbar" />
 

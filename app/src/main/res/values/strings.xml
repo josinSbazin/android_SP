@@ -44,5 +44,8 @@
     <string name="one_stick_weight_name">Масса 1 стержня длинной %1$d %2$s - %3$.3f кг</string>
     <string name="result_weight_name">Общая масса - %1$.3f кг</string>
     <string name="result_price_name">Общая стоимость - %1$.2f</string>
+    <string name="area_title">Площадь, As</string>
+    <string name="diameter_title">Диаметр, Ø</string>
+    <string name="nArea_title">Общий диаметр, As x n</string>
 
 </resources>

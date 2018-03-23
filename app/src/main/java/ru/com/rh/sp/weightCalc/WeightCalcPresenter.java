@@ -1,27 +1,25 @@
-package ru.com.rh.sp.WeightCalc;
+package ru.com.rh.sp.weightCalc;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.support.annotation.IdRes;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import ru.com.rh.sp.BR;
 import ru.com.rh.sp.BuildConfig;
-import ru.com.rh.sp.Data.LinearUnits;
-import ru.com.rh.sp.Data.PriceUnits;
-import ru.com.rh.sp.Data.RebarDiameters;
+import ru.com.rh.sp.data.LinearUnits;
+import ru.com.rh.sp.data.PriceUnits;
+import ru.com.rh.sp.data.RebarDiameters;
 import ru.com.rh.sp.R;
 import ru.com.rh.sp.databinding.ActivityWeightCalcBinding;
 
-import static ru.com.rh.sp.Data.LinearUnits.M;
-import static ru.com.rh.sp.Data.WeightUnits.KG;
-import static ru.com.rh.sp.Data.WeightUnits.T;
+import static ru.com.rh.sp.data.LinearUnits.M;
+import static ru.com.rh.sp.data.WeightUnits.KG;
+import static ru.com.rh.sp.data.WeightUnits.T;
 
 public class WeightCalcPresenter extends BaseObservable {
     private static final String TAG = WeightCalcPresenter.class.getSimpleName();

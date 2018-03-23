@@ -1,4 +1,4 @@
-package ru.com.rh.sp.ExpandedMenuCreator;
+package ru.com.rh.sp.expandedMenuCreator;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,7 +16,7 @@ import ru.com.rh.sp.R;
  * Адаптер для реализации созданного с помощью {@link ExpMenu} меню
  */
 
-public class ExpMenuAdapter extends BaseExpandableListAdapter{
+public class ExpMenuAdapter extends BaseExpandableListAdapter {
     private ExpMenu mMenu;
     private Context mContext;
     private ArrayList<ExpMenu.Group> originalGroups;
@@ -81,18 +81,19 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.drawer_group_layout, parent, false);
             groupHolder = new GroupHolder();
-            groupHolder.imageView = (ImageView) convertView.findViewById(R.id.group_menu_image);
-            groupHolder.textView = (TextView) convertView.findViewById(R.id.group_menu_text);
-            groupHolder.imageIndicatorView = (ImageView) convertView.findViewById(R.id.indicator_menu_image);
+            groupHolder.imageView = convertView.findViewById(R.id.group_menu_image);
+            groupHolder.textView = convertView.findViewById(R.id.group_menu_text);
+            groupHolder.imageIndicatorView = convertView.findViewById(R.id.indicator_menu_image);
             convertView.setTag(groupHolder);
         } else groupHolder = (GroupHolder) convertView.getTag();
 
-        ExpMenu.Group group = (ExpMenu.Group)getGroup(groupPosition);
+        ExpMenu.Group group = (ExpMenu.Group) getGroup(groupPosition);
 
         groupHolder.imageView.setImageDrawable(group.getIcon());
         groupHolder.textView.setText(group.getName());
 
-        if (isExpanded) groupHolder.imageIndicatorView.setImageDrawable(mMenu.getGroupIndicatorOpen());
+        if (isExpanded)
+            groupHolder.imageIndicatorView.setImageDrawable(mMenu.getGroupIndicatorOpen());
         else groupHolder.imageIndicatorView.setImageDrawable(mMenu.getGroupIndicatorClose());
 
         return convertView;
@@ -104,14 +105,15 @@ public class ExpMenuAdapter extends BaseExpandableListAdapter{
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.drawer_item_layout, parent, false);
+            if (inflater != null)
+                convertView = inflater.inflate(R.layout.drawer_item_layout, parent, false);
             childHolder = new ChildHolder();
-            childHolder.imageView = (ImageView) convertView.findViewById(R.id.item_menu_image);
-            childHolder.textView = (TextView) convertView.findViewById(R.id.item_menu_text);
+            childHolder.imageView = convertView.findViewById(R.id.item_menu_image);
+            childHolder.textView = convertView.findViewById(R.id.item_menu_text);
             convertView.setTag(childHolder);
         } else childHolder = (ChildHolder) convertView.getTag();
 
-        ExpMenu.Group.MenuItem child = ((ExpMenu.Group.MenuItem)getChild(groupPosition, childPosition));
+        ExpMenu.Group.MenuItem child = ((ExpMenu.Group.MenuItem) getChild(groupPosition, childPosition));
 
         childHolder.imageView.setImageDrawable(child.getIcon());
         childHolder.textView.setText(child.getName());

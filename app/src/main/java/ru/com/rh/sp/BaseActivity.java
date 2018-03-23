@@ -2,24 +2,23 @@ package ru.com.rh.sp;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ExpandableListView;
 
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ru.com.rh.sp.AreaCalc.AreaCalcActivity;
-import ru.com.rh.sp.ExpandedMenuCreator.ExpMenu;
-import ru.com.rh.sp.ExpandedMenuCreator.ExpMenuAdapter;
-import ru.com.rh.sp.WeightCalc.WeightCalcActivity;
+import ru.com.rh.sp.areaCalc.AreaCalcActivity;
+import ru.com.rh.sp.expandedMenuCreator.ExpMenu;
+import ru.com.rh.sp.expandedMenuCreator.ExpMenuAdapter;
+import ru.com.rh.sp.weightCalc.WeightCalcActivity;
 
 public class BaseActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
@@ -135,6 +134,9 @@ public class BaseActivity extends AppCompatActivity {
         } else if (id == AreaCalcChildId) {
             intent = new Intent(BaseActivity.this, AreaCalcActivity.class);
         }
+
+        if (intent != null)
+            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 
         return intent;
     }

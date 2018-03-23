@@ -1,4 +1,4 @@
-package ru.com.rh.sp.Data;
+package ru.com.rh.sp.data;
 
 /**
  * Стоимость за единицу измерения

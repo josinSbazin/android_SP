@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="36dp">
+
+    <include
+        android:id="@+id/diameter"
+        layout="@layout/cell_calc_area_table" />
+
+    <include
+        android:id="@+id/area"
+        layout="@layout/cell_calc_area_table" />
+
+    <include
+        android:id="@+id/nArea"
+        layout="@layout/cell_calc_area_table" />
+
+</LinearLayout>

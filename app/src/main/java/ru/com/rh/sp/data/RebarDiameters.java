@@ -1,4 +1,4 @@
-package ru.com.rh.sp.Data;
+package ru.com.rh.sp.data;
 
 /**
  * Арматура соответствующих диаметров (в мм) по СП 63.13330.2012
